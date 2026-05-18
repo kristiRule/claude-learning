@@ -58,3 +58,10 @@ logs.txt
 
 # local claude settings (personal permissions/MCP config)
 .claude/settings.local.json
+
+# generated demo output (source scripts are committed, not their output)
+demos/**/*.pdf
+demos/**/*.xlsx
+demos/**/*.pptx
+*.pdf
+*.xlsx
