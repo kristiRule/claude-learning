@@ -65,3 +65,6 @@ demos/**/*.xlsx
 demos/**/*.pptx
 *.pdf
 *.xlsx
+demos/weather/sources/
+demos/weather/knowledge/
+demos/weather/report/
