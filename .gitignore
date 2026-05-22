@@ -64,7 +64,9 @@ demos/**/*.pdf
 demos/**/*.xlsx
 demos/**/*.pptx
 demos/**/*.docx
+demos/**/*.apkg
 *.pdf
 *.xlsx
 *.docx
+*.apkg
 scripts/office/validators/__pycache__/
