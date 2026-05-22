@@ -63,5 +63,8 @@ logs.txt
 demos/**/*.pdf
 demos/**/*.xlsx
 demos/**/*.pptx
+demos/**/*.docx
 *.pdf
 *.xlsx
+*.docx
+scripts/office/validators/__pycache__/
