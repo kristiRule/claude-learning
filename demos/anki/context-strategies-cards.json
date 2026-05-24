@@ -1,0 +1,54 @@
+{
+  "deck_name": "Claude Code Skills :: Context Strategies",
+  "source": "Applying Common Context Strategies — Claude Code Skills Training",
+  "cards": [
+    {
+      "front": "What is progressive disclosure in Claude Code?",
+      "back": "The process by which Claude Code loads skill information in tiers: YAML front matter first, skill body second, and scripts/references/assets third — only as needed."
+    },
+    {
+      "front": "What is Level 1 in Claude Code's progressive disclosure?",
+      "back": "The YAML front matter — always loaded for every session. Contains name, description, allowed tools, and other metadata."
+    },
+    {
+      "front": "When does Claude Code load the body of a skill.md file (Level 2)?",
+      "back": "Only when Claude decides to trigger that skill. The body contains steps, workflows, and instructions."
+    },
+    {
+      "front": "When does Claude Code load scripts, references, and assets (Level 3)?",
+      "back": "Only when Claude deems them necessary during skill execution. They are optional and loaded on demand."
+    },
+    {
+      "front": "What is the character limit before Claude Code truncates skill descriptions?",
+      "back": "250 characters. Front-load the main use case so it appears before the cutoff."
+    },
+    {
+      "front": "What three rules make a skill description effective?",
+      "back": "1. Use third person. 2. Include specific trigger phrases. 3. Front-load the main use case in the first 250 characters."
+    },
+    {
+      "front": "What is wrong with this skill description: 'I can help you process Excel files'?",
+      "back": "It uses first person, is vague, and has no trigger phrases. Better: 'Processes expense CSVs into categorized reports.'"
+    },
+    {
+      "front": "Give an example of good trigger phrases for an expense-tracking skill.",
+      "back": "categorize expenses, expense reports, transaction CSVs, expense summary — concrete, task-specific phrases Claude will match."
+    },
+    {
+      "front": "What is dynamic context injection in Claude Code skills?",
+      "back": "Using ! commands inside a skill.md file to run bash commands and inject their output as live context at execution time."
+    },
+    {
+      "front": "How would you use dynamic context injection to summarize a pull request?",
+      "back": "Add !git diff, !gh pr view --comments, and !git diff --name-only in the skill — Claude sees the live output, not the commands."
+    },
+    {
+      "front": "What does the ! prefix do in a Claude Code skill.md file?",
+      "back": "Runs the following bash command and substitutes its output into the skill context — equivalent to running it in the terminal."
+    },
+    {
+      "front": "Why should you avoid putting heavy content in the YAML front matter?",
+      "back": "Front matter is loaded for every session regardless of whether the skill is used, so bloating it wastes context budget."
+    }
+  ]
+}
