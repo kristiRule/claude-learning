@@ -68,6 +68,6 @@ demos/**/*.apkg
 demos/**/*.json
 *.pdf
 *.xlsx
-*.docx
-*.apkg
-scripts/office/validators/__pycache__/
+demos/weather/sources/
+demos/weather/knowledge/
+demos/weather/report/
