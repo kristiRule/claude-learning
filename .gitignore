@@ -65,6 +65,7 @@ demos/**/*.xlsx
 demos/**/*.pptx
 demos/**/*.docx
 demos/**/*.apkg
+demos/**/*.json
 *.pdf
 *.xlsx
 *.docx
