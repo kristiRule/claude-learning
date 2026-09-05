@@ -49,9 +49,9 @@ min_consensus_citations: 3
 ## Output paths
 
 ```yaml
-sources_dir: demos/weather/sources
-knowledge_dir: demos/weather/knowledge
-report_dir: demos/weather/report
+sources_dir: demos/research-pipeline/weather/sources
+knowledge_dir: demos/research-pipeline/weather/knowledge
+report_dir: demos/research-pipeline/weather/report
 ```
 
 ## Gate behavior

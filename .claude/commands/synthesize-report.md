@@ -12,8 +12,8 @@ description: >
 # Synthesize Report
 
 Skill 3 of 4 in the research workflow. Reads all markdown files in
-`demos/weather/knowledge/`, performs cross-source analysis, and produces a
-full research report using the template in `demos/weather/references/report-template.md`.
+`demos/research-pipeline/weather/knowledge/`, performs cross-source analysis, and produces a
+full research report using the template in `demos/research-pipeline/weather/references/report-template.md`.
 
 Two human checkpoints: one after analysis (Gate 2a) and one after the
 first draft (Gate 2b).
@@ -22,7 +22,7 @@ first draft (Gate 2b).
 
 ## Step 1 — Load the knowledge base
 
-Read every `.md` file in `demos/weather/knowledge/` (skip `index.md`).
+Read every `.md` file in `demos/research-pipeline/weather/knowledge/` (skip `index.md`).
 Parse the YAML front matter for citation metadata. Report how many papers
 are loaded.
 
@@ -39,7 +39,7 @@ Analyze across all papers and identify:
 - **Gaps** — questions the collected literature does not answer
 - **Patterns** — methodological trends, geographic distribution, time trends
 
-Save to `demos/weather/report/analysis.md`.
+Save to `demos/research-pipeline/weather/report/analysis.md`.
 
 Build the evidence matrix — a table showing each paper's stance on the
 key claims:
@@ -50,7 +50,7 @@ key claims:
 | Cloud seeding increases precipitation | Supports (+15%) | Supports (+8–12%) | Contradicts (no sig. effect) |
 ```
 
-Save to `demos/weather/report/evidence-matrix.md`.
+Save to `demos/research-pipeline/weather/report/evidence-matrix.md`.
 
 ---
 
@@ -69,7 +69,7 @@ If the researcher says "skip" or "none," proceed directly to Step 3.
 
 ## Step 3 — Write the draft report
 
-Follow the structure in `demos/weather/references/report-template.md` exactly.
+Follow the structure in `demos/research-pipeline/weather/references/report-template.md` exactly.
 
 Requirements:
 - Every factual claim must have an inline citation `[author_year]`
@@ -78,20 +78,20 @@ Requirements:
 - Include a Mermaid `timeline` showing methodological evolution
 - Full bibliography at the end with DOI links (never Semantic Scholar URLs)
 
-Save to `demos/weather/report/draft.md`.
+Save to `demos/research-pipeline/weather/report/draft.md`.
 
 ---
 
 ## Step 4 — Verify
 
-Run the checks in `demos/weather/references/verification-rules.md`:
+Run the checks in `demos/research-pipeline/weather/references/verification-rules.md`:
 
 1. Confirm all output files exist
 2. Validate every citation key against `knowledge/index.md`
 3. Check every claim has at least one supporting citation
 4. Check Mermaid diagram syntax
 
-Save results to `demos/weather/report/verification-log.md`.
+Save results to `demos/research-pipeline/weather/report/verification-log.md`.
 
 Report any flagged citations or unsupported claims before presenting to
 the researcher.
@@ -111,9 +111,9 @@ Present the verification summary. Ask:
 ## Step 5 — Finalize
 
 Apply researcher feedback to `draft.md` and save the result as
-`demos/weather/report/final.md`.
+`demos/research-pipeline/weather/report/final.md`.
 
-Confirm: "Final report saved to `demos/weather/report/final.md`."
+Confirm: "Final report saved to `demos/research-pipeline/weather/report/final.md`."
 
 ---
 
@@ -121,8 +121,8 @@ Confirm: "Final report saved to `demos/weather/report/final.md`."
 
 | File | Purpose |
 |------|---------|
-| `demos/weather/report/analysis.md` | Cross-source agreements, contradictions, gaps |
-| `demos/weather/report/evidence-matrix.md` | Paper-vs-claim stance table |
-| `demos/weather/report/draft.md` | First full report draft |
-| `demos/weather/report/verification-log.md` | Citation and claim integrity log |
-| `demos/weather/report/final.md` | Researcher-approved final report |
+| `demos/research-pipeline/weather/report/analysis.md` | Cross-source agreements, contradictions, gaps |
+| `demos/research-pipeline/weather/report/evidence-matrix.md` | Paper-vs-claim stance table |
+| `demos/research-pipeline/weather/report/draft.md` | First full report draft |
+| `demos/research-pipeline/weather/report/verification-log.md` | Citation and claim integrity log |
+| `demos/research-pipeline/weather/report/final.md` | Researcher-approved final report |

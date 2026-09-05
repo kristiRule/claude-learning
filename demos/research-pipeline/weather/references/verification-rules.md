@@ -9,11 +9,11 @@ before presenting it for human review.
 
 Confirm all expected output files exist before declaring the skill complete:
 
-- [ ] `demos/weather/knowledge/index.md`
-- [ ] `demos/weather/report/analysis.md`
-- [ ] `demos/weather/report/evidence-matrix.md`
-- [ ] `demos/weather/report/draft.md`
-- [ ] `demos/weather/report/verification-log.md`
+- [ ] `demos/research-pipeline/weather/knowledge/index.md`
+- [ ] `demos/research-pipeline/weather/report/analysis.md`
+- [ ] `demos/research-pipeline/weather/report/evidence-matrix.md`
+- [ ] `demos/research-pipeline/weather/report/draft.md`
+- [ ] `demos/research-pipeline/weather/report/verification-log.md`
 
 If any file is missing, note it in the verification log and attempt to regenerate.
 
@@ -60,7 +60,7 @@ Verify any Mermaid diagrams in the report:
 
 ## Verification log format
 
-Save results to `demos/weather/report/verification-log.md`:
+Save results to `demos/research-pipeline/weather/report/verification-log.md`:
 
 ```markdown
 # Verification Log

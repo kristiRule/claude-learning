@@ -10,7 +10,7 @@ Key rules that must be enforced in every deck:
 - **Colors:** Titles in Dragon Gold `#B8860B`, dark background `#1A1A2E`, body text `#F0EDE6`
 - **Level naming:** Always "Dragon Raider Level 1 / 2 / 3" — never abbreviate
 - **Swag naming:** lowercase mid-sentence ("dice," "dice tray," "flagon")
-- **Speaker notes:** every content slide needs a one-sentence point, one off-slide talking point, and a transition cue
+- **Speaker notes:** every slide must have a full word-for-word readable script — written in first person, present tense, as if the presenter is speaking it aloud. No coaching language ("emphasize this", "pause here", "walk through"). No meta-instructions. Just the actual words to say. Long enough to fill the slide's time slot at a natural speaking pace (~130 words per minute).
 
 ## Steps
 
