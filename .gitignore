@@ -84,3 +84,7 @@ demos/research-pipeline/weather/report/
 # python bytecode
 __pycache__/
 *.pyc
+
+# personal photos: keep out of a public repo. the weather deck's generator
+# already falls back to a placeholder when the image is absent.
+demos/research-pipeline/weather/assets/ryan.png
