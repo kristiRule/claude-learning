@@ -65,3 +65,21 @@ Open [http://localhost:3000](http://localhost:3000)
 - Prisma with SQLite
 - Anthropic Claude AI
 - Vercel AI SDK
+
+## Demos
+
+The [`demos/`](demos/) directory holds standalone Claude Code learning
+projects, independent of the UIGen app above. Each is self-contained and
+needs no API key to run.
+
+| Demo | What it is |
+|---|---|
+| [`ai-overview/`](demos/ai-overview/) | A ~25 min AI/AGI lightning talk, built through a gated, source-verified research pipeline. Generates a 37-slide `.pptx` and a speaker-notes `.docx` from Node. |
+| [`weather/`](demos/weather/) | Weather-modification research synthesis: source triage through Semantic Scholar, structured extraction, and a generated deck, report, and pamphlet. |
+| [`dragon-con/`](demos/dragon-con/) | Event-planning collateral generation: slide deck, cheatsheet `.docx`, and client-list `.xlsx` driven by a shared style guide. |
+| [`ai-fluency/`](demos/ai-fluency/) | Short reference cheatsheets on prompting and context strategies, output as `.docx` and `.pdf`. |
+| [`mcp/`](demos/mcp/) | A custom MCP server exposing Google Drive upload as a tool, backed by rclone. |
+| [`anki/`](demos/anki/) | Flashcard generation experiments. |
+
+The research-pipeline slash commands these build on live in
+[`.claude/commands/`](.claude/commands/).

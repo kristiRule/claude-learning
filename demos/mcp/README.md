@@ -126,8 +126,10 @@ npm install @modelcontextprotocol/sdk
 
 ### 8. Register the MCP server with Claude Code
 
+Run this from the repo root so the path resolves correctly:
+
 ```bash
-claude mcp add gdrive node /home/kristi/Desktop/claude-learning/demos/mcp/gdrive-server.mjs
+claude mcp add gdrive node "$PWD/demos/mcp/gdrive-server.mjs"
 ```
 
 Verify it connected:
@@ -136,7 +138,15 @@ Verify it connected:
 claude mcp list
 ```
 
-You should see `gdrive: ... connected`.
+You should see `gdrive: ... connected`. If you only see the built-in
+`claude.ai Google Drive` connector, this server is not registered in the
+current environment and you'll need to run the `claude mcp add` command
+above. (MCP registrations are per-machine and are not carried in the repo.)
+
+> **Uploading binaries without this server:** the built-in claude.ai Google
+> Drive connector takes file content as base64 inside the tool call, which
+> is impractical for anything large (a 580 KB deck is ~790 KB base64). For
+> binary files, either register this server or call `rclone copy` directly.
 
 ---
 
@@ -176,7 +186,26 @@ echo '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"list_drive
 
 ## Notes
 
-- rclone tokens are stored in `~/.config/rclone/rclone.conf` and refresh automatically
+- rclone tokens are stored in `~/.config/rclone/rclone.conf`
 - The GCP project can stay on the free tier with no billing attached
-- The OAuth consent screen stays in "Testing" mode which is fine for personal use — tokens last 7 days and refresh automatically via rclone
-- If you ever get an auth error, run `~/bin/rclone config reconnect gdrive:` to re-authorize
+- **Expect to re-authorize roughly weekly.** While the OAuth consent screen
+  stays in "Testing" mode, refresh tokens expire after about 7 days and do
+  *not* always renew silently. When that happens you get:
+
+  ```
+  CRITICAL: Failed to create file system for "gdrive:":
+  couldn't fetch token: invalid_grant: maybe token expired?
+  ```
+
+  Fix it with the command below. It opens a browser, so it cannot be
+  automated or run by an agent on your behalf:
+
+  ```bash
+  ~/bin/rclone config reconnect gdrive:
+  ```
+
+  In Claude Code, prefix with `!` to run it in-session:
+  `! ~/bin/rclone config reconnect gdrive:`
+
+  Publishing the consent screen (moving it out of "Testing") removes the
+  7-day expiry, at the cost of a Google verification step.
