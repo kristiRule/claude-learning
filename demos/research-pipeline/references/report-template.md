@@ -1,7 +1,7 @@
 # Presentation Prep Report Template
 
 Used to structure `report/draft.md` and `report/final.md`. Adapted from
-`demos/weather/references/report-template.md` — organized by talk section
+`demos/research-pipeline/weather/references/report-template.md` — organized by talk section
 (since the output feeds slide-writing) rather than by research theme.
 
 ---
@@ -57,7 +57,7 @@ loopback to source-gathering>
 
 ## Section-by-Section Content Brief
 
-For each of the 10 talk sections, following `demos/research-pipeline/sources/`
+For each of the 10 talk sections, following `demos/research-pipeline/ai-agi-overview/sources/`
 and the confirmed outline:
 
 ### 1. Cold open

@@ -1,6 +1,6 @@
 # Source Scoring Rubric — AI/AGI Overview
 
-Adapted from `demos/weather/references/scoring-rubric.md`. Academic citation
+Adapted from `demos/research-pipeline/weather/references/scoring-rubric.md`. Academic citation
 count doesn't exist for a podcast episode or a YouTube channel, so "Impact"
 is replaced with "Authority" — a tiered judgment of how credible the speaker
 or publisher is on the specific claim being sourced.

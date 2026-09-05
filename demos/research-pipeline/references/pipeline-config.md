@@ -1,6 +1,6 @@
 # Research Pipeline Configuration — AI/AGI Overview
 
-Adapted from `demos/weather/references/pipeline-config.md` for a mixed-media
+Adapted from `demos/research-pipeline/weather/references/pipeline-config.md` for a mixed-media
 source set (podcast, YouTube, book, lab publications) instead of academic
 literature. Edit this file to change pipeline behavior without touching the
 hand-mirrored process itself.
@@ -56,11 +56,13 @@ min_consensus_citations: 2         # lower than weather's 3 — smaller source p
 
 ## Output paths
 
+Relative to the run directory (`demos/research-pipeline/<run>/`).
+
 ```yaml
-sources_dir: demos/research-pipeline/sources
-knowledge_dir: demos/research-pipeline/knowledge
-report_dir: demos/research-pipeline/report
-references_dir: demos/research-pipeline/references
+sources_dir: <run>/sources
+knowledge_dir: <run>/knowledge
+report_dir: <run>/report
+references_dir: demos/research-pipeline/references  # shared
 ```
 
 ## Gate behavior

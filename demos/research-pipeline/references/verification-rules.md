@@ -1,6 +1,6 @@
 # Verification Rules — AI/AGI Overview
 
-Adapted from `demos/weather/references/verification-rules.md`. DOIs are
+Adapted from `demos/research-pipeline/weather/references/verification-rules.md`. DOIs are
 replaced with direct URLs (plus a timestamp for audio/video or a
 page/chapter for the book).
 
@@ -8,11 +8,11 @@ page/chapter for the book).
 
 ## Rule 1 — File existence
 
-- [ ] `demos/research-pipeline/knowledge/index.md`
-- [ ] `demos/research-pipeline/report/analysis.md`
-- [ ] `demos/research-pipeline/report/evidence-matrix.md`
-- [ ] `demos/research-pipeline/report/draft.md`
-- [ ] `demos/research-pipeline/report/verification-log.md`
+- [ ] `demos/research-pipeline/ai-agi-overview/knowledge/index.md`
+- [ ] `demos/research-pipeline/ai-agi-overview/report/analysis.md`
+- [ ] `demos/research-pipeline/ai-agi-overview/report/evidence-matrix.md`
+- [ ] `demos/research-pipeline/ai-agi-overview/report/draft.md`
+- [ ] `demos/research-pipeline/ai-agi-overview/report/verification-log.md`
 
 If any file is missing, note it in the verification log and attempt to
 regenerate.

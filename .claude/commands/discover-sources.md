@@ -37,9 +37,9 @@ distinct from each other (e.g., `cloud seeding efficacy rainfall`, not just
 Run the search script for each keyword combination:
 
 ```bash
-python3 demos/weather/scripts/semantic_scholar.py "<keywords>" \
+python3 demos/research-pipeline/weather/scripts/semantic_scholar.py "<keywords>" \
   --limit 20 --year-from 2010 \
-  --out demos/weather/sources/<slug>-raw.json
+  --out demos/research-pipeline/weather/sources/<slug>-raw.json
 ```
 
 - If rate-limited (HTTP 429), the script waits and retries automatically
@@ -51,7 +51,7 @@ python3 demos/weather/scripts/semantic_scholar.py "<keywords>" \
 
 ## Step 3 — Score and rank
 
-Apply the rubric in `demos/weather/references/scoring-rubric.md`:
+Apply the rubric in `demos/research-pipeline/weather/references/scoring-rubric.md`:
 
 - **40% Relevance** — how directly does the source address the question
 - **30% Recency** — prefer 2018–present; retain pre-2018 only if foundational
@@ -70,7 +70,7 @@ Assign each paper a triage label:
 
 ## Step 4 — Write the triage report
 
-Save a human-readable report to `demos/weather/sources/triage-report.md`:
+Save a human-readable report to `demos/research-pipeline/weather/sources/triage-report.md`:
 
 ```markdown
 # Source Triage Report
@@ -99,7 +99,7 @@ Save a human-readable report to `demos/weather/sources/triage-report.md`:
 
 ## Step 5 — Write the output contract JSON
 
-Save structured data to `demos/weather/sources/selected-papers.json`.
+Save structured data to `demos/research-pipeline/weather/sources/selected-papers.json`.
 This file is the input to the `extract-content` skill.
 
 ```json
@@ -142,8 +142,8 @@ confirm: "Gate 1 complete — `selected-papers.json` is ready for extraction."
 
 | File | Purpose |
 |------|---------|
-| `demos/weather/sources/triage-report.md` | Human-readable ranked list for researcher review |
-| `demos/weather/sources/selected-papers.json` | Structured output contract → input to extract-content |
+| `demos/research-pipeline/weather/sources/triage-report.md` | Human-readable ranked list for researcher review |
+| `demos/research-pipeline/weather/sources/selected-papers.json` | Structured output contract → input to extract-content |
 
 ## Edge cases
 

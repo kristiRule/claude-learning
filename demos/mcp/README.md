@@ -155,7 +155,7 @@ above. (MCP registrations are per-machine and are not carried in the repo.)
 Once registered, ask Claude Code in any conversation:
 
 ```
-Upload demos/weather/weather-modification-deck-v2.pptx to my Google Drive
+Upload demos/research-pipeline/weather/weather-modification-deck-v2.pptx to my Google Drive
 in a folder called claude-learning.
 ```
 

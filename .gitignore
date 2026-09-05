@@ -68,15 +68,19 @@ demos/**/*.apkg
 demos/**/*.json
 *.pdf
 *.xlsx
-demos/weather/sources/
-demos/weather/knowledge/
-demos/weather/report/
+demos/research-pipeline/weather/sources/
+demos/research-pipeline/weather/knowledge/
+demos/research-pipeline/weather/report/
 
-# research-pipeline: the research trail is the point of the demo, so it is
+# research-pipeline: each run's research trail is the point of the demo, so it is
 # committed. selected-sources.json is curated input (scored source list),
 # not generated output, so it overrides the blanket demos/**/*.json rule.
-!demos/research-pipeline/sources/selected-sources.json
+!demos/research-pipeline/*/sources/selected-sources.json
 
 # LibreOffice / Office lock and temp files (contain local username + hostname)
 .~lock.*#
 ~$*
+
+# python bytecode
+__pycache__/
+*.pyc

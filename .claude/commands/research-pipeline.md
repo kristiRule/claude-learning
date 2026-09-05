@@ -12,7 +12,7 @@ description: >
 
 Skill 4 of 4 — the orchestrator. Chains the three research skills into a
 single gated pipeline. Configuration is in
-`demos/weather/references/pipeline-config.md`.
+`demos/research-pipeline/weather/references/pipeline-config.md`.
 
 ```
 Research question
@@ -43,7 +43,7 @@ Research question
 
 ## Step 1 — Load configuration
 
-Read `demos/weather/references/pipeline-config.md`. Use its settings for
+Read `demos/research-pipeline/weather/references/pipeline-config.md`. Use its settings for
 paper limits, scoring weights, output paths, and gate behavior throughout
 the pipeline.
 
@@ -53,8 +53,8 @@ the pipeline.
 
 Run the `/discover-sources` skill with the user's research question.
 
-**Output:** `demos/weather/sources/selected-papers.json` and
-`demos/weather/sources/triage-report.md`
+**Output:** `demos/research-pipeline/weather/sources/selected-papers.json` and
+`demos/research-pipeline/weather/sources/triage-report.md`
 
 ---
 
@@ -74,9 +74,9 @@ Gate 1 is complete before proceeding.
 ## Stage 2 — Extract content
 
 Run the `/extract-content` skill pointing to
-`demos/weather/sources/selected-papers.json`.
+`demos/research-pipeline/weather/sources/selected-papers.json`.
 
-**Output:** `demos/weather/knowledge/*.md` and `demos/weather/knowledge/index.md`
+**Output:** `demos/research-pipeline/weather/knowledge/*.md` and `demos/research-pipeline/weather/knowledge/index.md`
 
 This stage runs to completion with no gate.
 
@@ -87,8 +87,8 @@ This stage runs to completion with no gate.
 Run the analysis phase of `/synthesize-report` (Steps 1–2):
 cross-source analysis, evidence matrix.
 
-**Output:** `demos/weather/report/analysis.md` and
-`demos/weather/report/evidence-matrix.md`
+**Output:** `demos/research-pipeline/weather/report/analysis.md` and
+`demos/research-pipeline/weather/report/evidence-matrix.md`
 
 ---
 
@@ -127,7 +127,7 @@ If `gate_2b_enabled: true`, present the verification summary. Ask:
 
 ## Stage 5 — Finalize
 
-Apply Gate 2b feedback and save `demos/weather/report/final.md`.
+Apply Gate 2b feedback and save `demos/research-pipeline/weather/report/final.md`.
 
 Print the full output manifest:
 
@@ -135,15 +135,15 @@ Print the full output manifest:
 Pipeline complete.
 
 Outputs:
-  demos/weather/sources/triage-report.md
-  demos/weather/sources/selected-papers.json
-  demos/weather/knowledge/index.md
-  demos/weather/knowledge/<N> paper files
-  demos/weather/report/analysis.md
-  demos/weather/report/evidence-matrix.md
-  demos/weather/report/draft.md
-  demos/weather/report/verification-log.md
-  demos/weather/report/final.md
+  demos/research-pipeline/weather/sources/triage-report.md
+  demos/research-pipeline/weather/sources/selected-papers.json
+  demos/research-pipeline/weather/knowledge/index.md
+  demos/research-pipeline/weather/knowledge/<N> paper files
+  demos/research-pipeline/weather/report/analysis.md
+  demos/research-pipeline/weather/report/evidence-matrix.md
+  demos/research-pipeline/weather/report/draft.md
+  demos/research-pipeline/weather/report/verification-log.md
+  demos/research-pipeline/weather/report/final.md
 ```
 
 ---

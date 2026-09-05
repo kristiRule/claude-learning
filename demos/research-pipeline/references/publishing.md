@@ -1,4 +1,6 @@
-# Publishing: Building and Shipping the Deck
+# Publishing: Building and Shipping a Run
+
+Paths below use `<run>` for the run directory, e.g. `ai-agi-overview`.
 
 Steps to regenerate the artifacts and get them to Google Drive.
 
@@ -9,9 +11,9 @@ Steps to regenerate the artifacts and get them to Google Drive.
 Both generators are standalone; run from the repo root.
 
 ```bash
-node demos/research-pipeline/gen-deck.mjs           # -> ai-overview-deck.pptx
-node demos/research-pipeline/gen-speaker-notes.mjs  # -> ai-overview-speaker-notes.docx
-node demos/research-pipeline/gen-report.mjs         # -> report/report.md + research-report.docx
+node demos/research-pipeline/ai-agi-overview/gen-deck.mjs           # -> deck.pptx
+node demos/research-pipeline/ai-agi-overview/gen-speaker-notes.mjs  # -> speaker-notes.docx
+node demos/research-pipeline/ai-agi-overview/gen-report.mjs         # -> report/report.md + research-report.docx
 ```
 
 `gen-report.mjs` is independent: it reads `sources/selected-sources.json`
@@ -32,8 +34,8 @@ slide edges, text hidden behind callout boxes, a diagram missing its
 connecting lines) that were invisible from the source alone.
 
 ```bash
-cd demos/research-pipeline
-soffice --headless --convert-to pdf --outdir /tmp/deck-check ai-overview-deck.pptx
+cd demos/research-pipeline/<run>
+soffice --headless --convert-to pdf --outdir /tmp/deck-check deck.pptx
 cd /tmp/deck-check && pdftoppm -png -r 100 ai-overview-deck.pdf slide
 # renders slide-01.png, slide-02.png, ...
 # single slide:  pdftoppm -png -r 100 -f 17 -l 17 ai-overview-deck.pdf s17
@@ -52,9 +54,9 @@ Uses `rclone` with the `gdrive:` remote. The
 uses it too).
 
 ```bash
-cd demos/research-pipeline
-~/bin/rclone copy ai-overview-deck.pptx          gdrive:claude-learning/
-~/bin/rclone copy ai-overview-speaker-notes.docx gdrive:claude-learning/
+cd demos/research-pipeline/<run>
+~/bin/rclone copy deck.pptx          gdrive:claude-learning/
+~/bin/rclone copy speaker-notes.docx gdrive:claude-learning/
 ~/bin/rclone copy research-report.docx           gdrive:claude-learning/
 
 # verify

@@ -14,12 +14,30 @@ Two halves:
 
 ---
 
+## Repository layout
+
+Two unrelated projects share this root, which is worth signposting.
+
+| Path | Belongs to | What it is |
+|---|---|---|
+| [`demos/`](demos/) | Learning work | Self-contained projects that generate documents. No API key needed. |
+| [`.claude/commands/`](.claude/commands/) | Learning work | Custom slash commands the demos drive. |
+| `.claude/hooks/` | Learning work | Claude Code hooks. Unrelated to `src/hooks/`. |
+| [`scripts/`](scripts/) | Shared tooling | OOXML helpers (`pack`, `unpack`, `validate`) behind the `/docx` command. Usable by any demo. |
+| `src/` | UIGen | The Next.js application: `app/`, `components/`, `hooks/`, `lib/`. |
+| `prisma/` | UIGen | Database schema and migrations. |
+
+`src/` and `prisma/` must stay at the repo root; Next.js and Prisma resolve
+them by convention.
+
+---
+
 ## Demos
 
 | Demo | What it is |
 |---|---|
-| [`research-pipeline/`](demos/research-pipeline/) | A gated, source-verified research workflow that turns a question into a slide deck, a speaker script, and a standalone report. Sources are scored before use, every claim is tagged fact or opinion, and review gates catch unsupported sections before anything is written. Worked example: a ~25 min AI/AGI talk. |
-| [`weather/`](demos/weather/) | The same workflow applied to weather-modification research, sourced through the Semantic Scholar API. Produces a deck, a report, and a pamphlet. |
+| [`research-pipeline/`](demos/research-pipeline/) | A gated, source-verified research workflow that turns a question into a slide deck, a speaker script, and a standalone report. Sources are scored before use, every claim is tagged fact or opinion, and review gates catch unsupported sections before anything is written. Two runs live inside it: [`ai-agi-overview/`](demos/research-pipeline/ai-agi-overview/) and [`weather/`](demos/research-pipeline/weather/). |
+| [`weather/`](demos/research-pipeline/weather/) | The same workflow applied to weather-modification research, sourced through the Semantic Scholar API. Produces a deck, a report, and a pamphlet. |
 | [`mcp/`](demos/mcp/) | A custom MCP server exposing Google Drive upload as a tool Claude can call, backed by rclone. Includes full OAuth setup. |
 | [`dragon-con/`](demos/dragon-con/) | Event collateral from a shared style guide: slide deck, cheatsheet `.docx`, and client-list `.xlsx`. |
 | [`ai-fluency/`](demos/ai-fluency/) | Short reference cheatsheets on prompting and context strategies, generated to `.docx` and `.pdf`. |

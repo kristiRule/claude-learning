@@ -4,7 +4,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUT = path.join(__dirname, 'ai-overview-speaker-notes.docx');
+const OUT = path.join(__dirname, 'speaker-notes.docx');
 
 // Pulled directly from gen-deck.mjs's addNotes() calls, in slide
 // order. Keep this in sync by hand if the deck script changes; there's no

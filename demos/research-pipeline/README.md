@@ -9,9 +9,18 @@ are used, every claim is tagged fact or opinion, gaps are caught by review
 gates before anything is written, and the whole trail stays in the repo so
 the reasoning is inspectable rather than asserted.
 
-The worked example currently in this directory is a ~25 minute talk on AI and
-AGI for engineers and infrastructure teams. Swap the sources and the content,
-and the machinery is unchanged.
+Shared method lives at this level in `references/`. Each **run** is its own
+directory holding that topic's sources, research trail, and generators.
+Adding a topic means adding a sibling directory, not editing the method.
+
+| Run | Topic | Outputs |
+|---|---|---|
+| [`ai-agi-overview/`](ai-agi-overview/) | A ~25 min talk on AI and AGI for engineers and infrastructure teams | deck, speaker script, report |
+| [`weather/`](weather/) | Weather-modification research, sourced through the Semantic Scholar API | deck, report, pamphlet |
+
+`weather/` came first and is where this method was originally worked out;
+`ai-agi-overview/` is the version that generalized it. Their generators
+differ in structure because of that history.
 
 ---
 
@@ -24,13 +33,13 @@ and the machinery is unchanged.
 | Standalone briefing report | `gen-report.mjs` | `.md` + `.docx` |
 
 ```bash
-node demos/research-pipeline/gen-deck.mjs
-node demos/research-pipeline/gen-speaker-notes.mjs
-node demos/research-pipeline/gen-report.mjs
+node demos/research-pipeline/ai-agi-overview/gen-deck.mjs
+node demos/research-pipeline/ai-agi-overview/gen-speaker-notes.mjs
+node demos/research-pipeline/ai-agi-overview/gen-report.mjs
 ```
 
 Pure Node, no API key required. The report renders on GitHub at
-[`report/report.md`](report/report.md) and also builds a printable `.docx`.
+[`ai-agi-overview/report/report.md`](ai-agi-overview/report/report.md) and also builds a printable `.docx`.
 
 ---
 
@@ -108,27 +117,30 @@ actually looking at it is a required step, not a nicety.
 
 ```
 demos/research-pipeline/
-├── gen-deck.mjs             # slides (source of truth for slide content)
-├── gen-speaker-notes.mjs    # word-for-word script
-├── gen-report.mjs           # report.md + research-report.docx
-├── sources/
-│   ├── triage-report.md     # scored triage, with rationale
-│   └── selected-sources.json# curated list; drives the report bibliography
-├── knowledge/               # one structured record per source
-│   └── index.md             # master index + follow-up flags
-├── report/
-│   ├── report.md            # the readable output
-│   ├── analysis.md          # agreements / contradictions / gaps
-│   ├── evidence-matrix.md   # claim × source matrix
-│   ├── draft.md → final.md  # section-by-section content brief
-│   └── verification-log.md  # citation + claim integrity checks
-└── references/
-    ├── STYLE_GUIDE.md       # voice, slide rules, visual system
-    ├── scoring-rubric.md    # the 40/30/30 rubric
-    ├── verification-rules.md
-    ├── report-template.md
-    ├── pipeline-config.md
-    └── publishing.md        # build, visual QA, Drive upload
+├── references/                  # SHARED METHOD, reused by every run
+│   ├── scoring-rubric.md        # the 40/30/30 rubric
+│   ├── verification-rules.md    # what "verified" has to mean
+│   ├── report-template.md
+│   ├── pipeline-config.md       # stage settings and gate toggles
+│   ├── STYLE_GUIDE.md           # default voice and slide rules
+│   └── publishing.md            # build, visual QA, Drive upload
+│
+├── weather/                     # a run: the original, Semantic Scholar sourced
+└── ai-agi-overview/             # a run: add siblings for new topics
+    ├── gen-deck.mjs             # slides (source of truth for slide content)
+    ├── gen-speaker-notes.mjs    # word-for-word script
+    ├── gen-report.mjs           # report.md + research-report.docx
+    ├── sources/
+    │   ├── triage-report.md     # scored triage, with rationale
+    │   └── selected-sources.json# curated list; drives the report bibliography
+    ├── knowledge/               # one structured record per source
+    │   └── index.md             # master index + follow-up flags
+    └── report/
+        ├── report.md            # the readable output
+        ├── analysis.md          # agreements / contradictions / gaps
+        ├── evidence-matrix.md   # claim x source matrix
+        ├── draft.md -> final.md # section-by-section content brief
+        └── verification-log.md  # citation + claim integrity checks
 ```
 
 `gen-deck.mjs` and `gen-speaker-notes.mjs` are **not coupled**: the notes
@@ -138,17 +150,28 @@ manifest directly, so its bibliography cannot drift from the scored list.
 
 ---
 
-## Running it on a different topic
+## Starting a new run
 
-1. Replace `sources/selected-sources.json` with your own scored sources,
-   using the rubric in [`references/scoring-rubric.md`](references/scoring-rubric.md).
-2. Write one record per source in `knowledge/`, tagging each claim
+Copy an existing run directory and replace its material. The shared
+`references/` stay as they are.
+
+```bash
+cp -r demos/research-pipeline/ai-agi-overview demos/research-pipeline/<topic>
+```
+
+1. Replace `<topic>/sources/selected-sources.json` with your own sources,
+   scored using [`references/scoring-rubric.md`](references/scoring-rubric.md).
+2. Write one record per source in `<topic>/knowledge/`, tagging each claim
    `[fact]` or `[opinion]`.
-3. Work through `report/analysis.md` for agreements, contradictions, and
-   gaps. Loop back if a planned section has no support.
+3. Work through `<topic>/report/analysis.md` for agreements, contradictions,
+   and gaps. Loop back for more sources if a planned section has no support.
 4. Rewrite the content arrays in the three generator scripts.
 5. Build, then run the visual QA pass in
    [`references/publishing.md`](references/publishing.md).
+
+Add the run to `.gitignore`'s tracked-source exception so its
+`selected-sources.json` is committed as pipeline input rather than treated
+as generated output.
 
 The four staged slash commands this workflow is modeled on live in
 [`.claude/commands/`](../../.claude/commands/). They are wired to another
@@ -174,5 +197,5 @@ channels, and research-organization reports.
   left out of the slides.
 
 Known soft spots are recorded in the follow-up flags in
-[`knowledge/index.md`](knowledge/index.md) and in the limitations section of
+[`ai-agi-overview/knowledge/index.md`](ai-agi-overview/knowledge/index.md) and in the limitations section of
 each knowledge record.
