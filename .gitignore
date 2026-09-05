@@ -72,10 +72,10 @@ demos/weather/sources/
 demos/weather/knowledge/
 demos/weather/report/
 
-# ai-overview: the research trail is the point of the demo, so it is
+# research-pipeline: the research trail is the point of the demo, so it is
 # committed. selected-sources.json is curated input (scored source list),
 # not generated output, so it overrides the blanket demos/**/*.json rule.
-!demos/ai-overview/sources/selected-sources.json
+!demos/research-pipeline/sources/selected-sources.json
 
 # LibreOffice / Office lock and temp files (contain local username + hostname)
 .~lock.*#

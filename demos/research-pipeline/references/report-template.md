@@ -57,7 +57,7 @@ loopback to source-gathering>
 
 ## Section-by-Section Content Brief
 
-For each of the 10 talk sections, following `demos/ai-overview/sources/`
+For each of the 10 talk sections, following `demos/research-pipeline/sources/`
 and the confirmed outline:
 
 ### 1. Cold open

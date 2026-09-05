@@ -74,7 +74,7 @@ needs no API key to run.
 
 | Demo | What it is |
 |---|---|
-| [`ai-overview/`](demos/ai-overview/) | A ~25 min AI/AGI lightning talk, built through a gated, source-verified research pipeline. Generates a 37-slide `.pptx` and a speaker-notes `.docx` from Node. |
+| [`research-pipeline/`](demos/research-pipeline/) | A gated, source-verified research workflow that turns a question into a slide deck, a speaker script, and a standalone report. Sources are scored before use and every claim is tagged fact or opinion. Worked example: a ~25 min AI/AGI talk. |
 | [`weather/`](demos/weather/) | Weather-modification research synthesis: source triage through Semantic Scholar, structured extraction, and a generated deck, report, and pamphlet. |
 | [`dragon-con/`](demos/dragon-con/) | Event-planning collateral generation: slide deck, cheatsheet `.docx`, and client-list `.xlsx` driven by a shared style guide. |
 | [`ai-fluency/`](demos/ai-fluency/) | Short reference cheatsheets on prompting and context strategies, output as `.docx` and `.pdf`. |

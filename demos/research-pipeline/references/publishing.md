@@ -9,11 +9,15 @@ Steps to regenerate the artifacts and get them to Google Drive.
 Both generators are standalone; run from the repo root.
 
 ```bash
-node demos/ai-overview/gen-ai-overview-pptx.mjs      # -> ai-overview-deck.pptx
-node demos/ai-overview/gen-speaker-notes.mjs         # -> ai-overview-speaker-notes.docx
+node demos/research-pipeline/gen-deck.mjs           # -> ai-overview-deck.pptx
+node demos/research-pipeline/gen-speaker-notes.mjs  # -> ai-overview-speaker-notes.docx
+node demos/research-pipeline/gen-report.mjs         # -> report/report.md + research-report.docx
 ```
 
-**Keep them in sync by hand.** `gen-speaker-notes.mjs` holds its own copy
+`gen-report.mjs` is independent: it reads `sources/selected-sources.json`
+directly, so its bibliography cannot drift from the scored source list.
+
+**Keep the deck and speaker notes in sync by hand.** `gen-speaker-notes.mjs` holds its own copy
 of every `addNotes()` string, in slide order, with explicit `num:` fields.
 There is no automated extraction. If you add, remove, or reorder a slide
 in the pptx script, update the notes script to match and renumber.
@@ -28,7 +32,7 @@ slide edges, text hidden behind callout boxes, a diagram missing its
 connecting lines) that were invisible from the source alone.
 
 ```bash
-cd demos/ai-overview
+cd demos/research-pipeline
 soffice --headless --convert-to pdf --outdir /tmp/deck-check ai-overview-deck.pptx
 cd /tmp/deck-check && pdftoppm -png -r 100 ai-overview-deck.pdf slide
 # renders slide-01.png, slide-02.png, ...
@@ -48,12 +52,13 @@ Uses `rclone` with the `gdrive:` remote. The
 uses it too).
 
 ```bash
-cd demos/ai-overview
+cd demos/research-pipeline
 ~/bin/rclone copy ai-overview-deck.pptx          gdrive:claude-learning/
 ~/bin/rclone copy ai-overview-speaker-notes.docx gdrive:claude-learning/
+~/bin/rclone copy research-report.docx           gdrive:claude-learning/
 
 # verify
-~/bin/rclone lsl gdrive:claude-learning/ | grep ai-overview
+~/bin/rclone lsl gdrive:claude-learning/
 ```
 
 `copy` overwrites the same filename in place, so re-running after edits

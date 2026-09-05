@@ -57,10 +57,10 @@ min_consensus_citations: 2         # lower than weather's 3 — smaller source p
 ## Output paths
 
 ```yaml
-sources_dir: demos/ai-overview/sources
-knowledge_dir: demos/ai-overview/knowledge
-report_dir: demos/ai-overview/report
-references_dir: demos/ai-overview/references
+sources_dir: demos/research-pipeline/sources
+knowledge_dir: demos/research-pipeline/knowledge
+report_dir: demos/research-pipeline/report
+references_dir: demos/research-pipeline/references
 ```
 
 ## Gate behavior

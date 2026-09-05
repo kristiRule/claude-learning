@@ -10,7 +10,7 @@
 > engineers plus infrastructure and operations teams, so examples lean
 > toward on-prem and cloud platforms, networking, compute, and help desk
 > work. The content briefs below reflect the original
-> structure and are still fact-accurate, but **`gen-ai-overview-pptx.mjs`
+> structure and are still fact-accurate, but **`gen-deck.mjs`
 > is the current source of truth for slide order, wording, and tone**,
 > not this section-by-section brief.
 

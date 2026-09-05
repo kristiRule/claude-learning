@@ -8,11 +8,11 @@ page/chapter for the book).
 
 ## Rule 1 — File existence
 
-- [ ] `demos/ai-overview/knowledge/index.md`
-- [ ] `demos/ai-overview/report/analysis.md`
-- [ ] `demos/ai-overview/report/evidence-matrix.md`
-- [ ] `demos/ai-overview/report/draft.md`
-- [ ] `demos/ai-overview/report/verification-log.md`
+- [ ] `demos/research-pipeline/knowledge/index.md`
+- [ ] `demos/research-pipeline/report/analysis.md`
+- [ ] `demos/research-pipeline/report/evidence-matrix.md`
+- [ ] `demos/research-pipeline/report/draft.md`
+- [ ] `demos/research-pipeline/report/verification-log.md`
 
 If any file is missing, note it in the verification log and attempt to
 regenerate.

@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const OUT = path.join(__dirname, 'ai-overview-deck.pptx');
+const OUT = path.join(__dirname, "ai-overview-deck.pptx");
 
 // Theme (pptxgenjs uses hex WITHOUT the # sign), from references/STYLE_GUIDE.md.
 // Our own palette, distinct from the weather/dragon-con navy+gold house style (by request).
@@ -881,7 +881,7 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
     x: 1.0, y: 2.6, w: FULLW - 2.0, h: 1.1, fontSize: 40, bold: true, color: OFFWH, fontFace: FONT, align: 'center',
   });
   s.addShape(pres.ShapeType.rect, { x: FULLW/2 - 0.6, y: 3.8, w: 1.2, h: 0.035, fill: { color: BLUE }, line: { width: 0 } });
-  s.addText('Full written report and sources: demos/ai-overview/report/final.md', {
+  s.addText('Full written report and sources: demos/research-pipeline/report/report.md', {
     x: 1.0, y: 4.05, w: FULLW - 2.0, h: 0.5, fontSize: 12, color: MUTED, fontFace: FONT, align: 'center',
   });
   s.addNotes(
