@@ -186,12 +186,17 @@ from ~60% to ~100% in a single year per Stanford's Index), human
 preference (LMArena, formerly LMSYS Chatbot Arena — even the arena's own
 name changed), and task-autonomy (METR's time horizon, doubling roughly
 every 7 months, ~110 min at March 2025 — check the Jan 2026 update for a
-fresher number). Why leaderboards can mislead: GPT-6 Astra's headline
-ARC-AGI-3 score used OpenAI's own API/scaffold, and a reported
-NVIDIA-built system scored just as high on the same eval using Claude
-Opus 5 with a much lower baseline model — the surrounding system, not
-just the base model, drives the number.
-**Supporting citations:** [stanford_ai_index_2026], [lmarena_chatbot_arena], [metr_long_tasks], [gpt6_astra_agi_era]
+fresher number). Fourth kind added 2026-09-10: novel-task adaptation
+(ARC-AGI — humans 100%, frontier AI 0.51% at the Mar 2026 launch of
+ARC-AGI-3, 62.7% by Sep 2026). Why leaderboards can mislead **(revised
+2026-09-10)**: ARC Prize's own verified run of GPT-6 Astra on ARC-AGI-3
+scored **62.7% for $26,098 on the Standard harness and 99.9% for $18,817
+on the Provider Adapter harness** — same model, same benchmark, same
+week. The surrounding system, not just the base model, drives the number,
+and this now rests on a first-party verified pair rather than the earlier
+press-reported NVIDIA/Claude-Opus-5 anecdote, which ARC Prize does not
+corroborate and which has been retired from slide copy.
+**Supporting citations:** [stanford_ai_index_2026], [lmarena_chatbot_arena], [metr_long_tasks], [gpt6_astra_agi_era], [arc_agi_chollet]
 **Visual idea:** A real screenshot of a leaderboard (LMArena or
 SWE-bench), annotated to show what's actually being measured — not a
 generic bar chart.
