@@ -210,3 +210,164 @@ Individual `knowledge/*.md` files' frontmatter `triage:` field still shows
 the original informal labels from extraction time and has **not** been
 bulk-edited to match — treat this table, not that field, as the source of
 truth for triage tier.
+
+---
+
+## Loopback addition — ARC-AGI (2026-09-10)
+
+**Trigger:** user review question — "did we include the ARC AGI
+matrix/metric?" Audit found ARC-AGI-3 named once on the "how to read a
+benchmark score" slide, inherited secondhand from `gpt6_astra_agi_era`,
+with no knowledge file, no entry in `selected-sources.json`, no place on
+the benchmark-selection matrix, and no presence in the AGI section. That
+last one is the real gap: the deck defines AGI in one section and
+discusses benchmarks in another, and nothing connects them.
+
+### 25. ARC-AGI — ARC Prize Foundation / François Chollet
+- **Type:** lab_publication (benchmark + foundation blog)
+- **Speaker:** François Chollet (introduced ARC-AGI in "On the Measure of
+  Intelligence," 2019)
+- **Publisher:** ARC Prize Foundation
+- **Citation:** https://arcprize.org/arc-agi
+- **Date:** 2026-09-03 (most recent material used)
+- **Authority tier:** High — named research org publishing original
+  empirical work, first-party for its own benchmark, and running an
+  independent academic panel to audit methodology (ARC Prize Verified)
+- **Fetch method:** `web_fetch_primary_multi_page` — benchmark overview
+  pages for ARC-AGI / ARC-AGI-2 / ARC-AGI-3, plus four foundation blog
+  posts (`/blog/astra`, `/blog/arc-agi-3-launch`,
+  `/blog/arc-agi-3-gpt-5-5-opus-4-7-analysis`,
+  `/blog/arc-agi-3-human-dataset`, `/blog/arc-prize-verified-program`)
+
+| Source | Relevance (40%) | Recency (30%) | Authority (30%) | Composite | Triage |
+|---|---|---|---|---|---|
+| `arc_agi_chollet` | 0.95 | 1.00 | 0.90 | **0.950** | Keep — Primary |
+
+**Scoring notes.** Relevance 0.95: serves three sections at once (AGI
+definition, benchmark-reading skill, benchmark selection) and is the only
+source in the set that operationally bridges "what is AGI" to "what would
+you measure." Docked 0.05 only because it does not touch the business,
+governance, or infra threads. Recency 1.00: primary material is Mar–Sep
+2026. Authority 0.90 rather than 1.00: high tier and first-party for its
+own benchmark, but ARC Prize is an advocacy-adjacent foundation with a
+stake in ARC-AGI being seen as *the* AGI yardstick — a real interest, not
+a disqualifying one, and worth a light discount versus a neutral lab
+publication.
+
+Composite 0.95 makes this the **fourth-highest-scoring source** in the
+set, behind only `gpt6_astra_agi_era` (1.00), `stanford_ai_index_2026`
+and `gartner_hype_cycle_2026` (0.96).
+
+### What this source resolved
+
+The open **[NUMBER DISCREPANCY]** in `report/verification-log.md` — GPT-6
+Astra's ARC-AGI-3 score reported as 99.9% by OpenAI and 98.6% by press —
+is now closed. ARC Prize's own verified run shows the spread is a
+**harness** artifact, not a factual dispute: **62.7% for $26,098** on the
+Standard harness, **99.9% for $18,817** on the Provider Adapter harness,
+same model, same semi-private set. This is a stronger version of the exact
+teaching point slide 24 was already making, now first-party and verified.
+
+Correspondingly, the **press-reported NVIDIA / Claude-Opus-5 "100% over a
+~30% base model" anecdote is retired** from slide copy. ARC Prize's own
+Astra write-up does not mention it, and an uncorroborated third-party
+number is the wrong thing to stand on a slide that is itself teaching
+source skepticism. Do not restore without a primary source.
+
+### Known gap in the table above (pre-existing, not introduced here)
+
+The 2026-09-04 Stage 1.5 rescore table lists **20** sources. Four sources
+added after that pass — `nov_2025_frontier_triple_launch`,
+`apr_2026_release_density`, `rag_lewis_2020`, `rag_vs_longcontext_2026` —
+were never scored into it, though they do carry scores in
+`selected-sources.json`. Flagging rather than silently backfilling; a
+future pass should either extend that table or restate it as a snapshot.
+
+**Running totals across all sources: 25 total — 21 Primary, 4 Supporting,
+0 Review, 0 Drop.**
+
+---
+
+## Loopback addition — Fireship (2026-09-10)
+
+**Trigger:** user-supplied source. The user had been watching Fireship and
+named this specific video rather than adding the channel generally, so it
+is scored as a single video, not a channel-level entry (contrast
+`techworld_nana`, which is capped at 0.55 relevance precisely because no
+specific video was ever identified).
+
+### 26. Fireship — "I built the same game with Astra and Fable 5.1... only one was fun"
+- **Type:** youtube_video
+- **Speaker:** Jeff Delaney (Fireship / The Code Report)
+- **Citation:** https://www.youtube.com/watch?v=2Xiljy4xzbc
+- **Date:** 2026-09-09 (1.37M views at extraction, one day after publish)
+- **Authority tier:** Medium-high
+- **Fetch method:** `oembed_metadata + auto_caption_transcript` — full
+  7,152-character transcript. Note for future runs: yt-dlp (system version
+  2022.4.8) fails on current YouTube, and youtubetotranscript.com /
+  youtubetranscript.com both return 403 or CAPTCHA. What worked was
+  `pip install --target ./pylibs youtube-transcript-api` into a scratch
+  dir, then `YouTubeTranscriptApi().list(vid).find_transcript(['en'])`.
+
+| Source | Relevance (40%) | Recency (30%) | Authority (30%) | Composite | Triage |
+|---|---|---|---|---|---|
+| `fireship_astra_vs_fable` | 0.80 | 1.00 | 0.65 | **0.815** | Keep — Primary |
+
+**Scoring notes.** Relevance 0.80: serves the models section (primary),
+the AGI section (Huang's declaration), and benchmarks (harness
+corroboration) — but it is one video on one narrow test, so it does not
+reach `arc_agi_chollet`'s 0.95. Recency 1.00: published the day before
+extraction. Authority 0.65 — below `techworld_nana`'s 0.70 despite the
+larger channel, and the reasoning matters: the **format is explicitly
+satire**, and his ARC benchmark figures are imprecise enough that they are
+not slide-usable. What pulls it up to 0.65 rather than lower is that the
+head-to-head is genuine **first-party experimental work** — he ran both
+models himself on an identical prompt on the same day and reported what
+he got, which is more than most commentary offers.
+
+**Handling rule.** Cite the head-to-head *as what it is* — one developer's
+hands-on comparison, n=1, subjective — never as a general capability
+finding. Cite the Huang quote as a quote. Do not cite his ARC numbers.
+
+### Why this one earns Primary despite being a comedy channel
+
+Its central finding is the most directly useful thing in the source set
+for the audience's actual daily decision. Same prompt, same day, two
+frontier models: Astra returned beautiful graphics and a boring game;
+Fable 5.1 returned ugly graphics and a genuinely better simulation with
+"way more knobs to turn" and real physics. **The benchmark leader was not
+the better tool for the job.** That is the model-selection thesis of the
+whole talk, demonstrated rather than asserted, and it generalizes straight
+to picking a model inside an enterprise tool like GitHub Copilot.
+
+It also gives the AGI section a second interested party: Jensen Huang's
+"AGI has arrived. Congratulations, OpenAI team" — posted alongside a note
+that Astra trained on 100,000+ NVIDIA GPUs with 400,000 more coming.
+Paired with Brockman's "welcome to the AGI era," the AGI section can now
+make a sharper point than "nobody agrees": **notice who is doing the
+declaring, and what they sell.**
+
+**Running totals across all sources: 26 total — 22 Primary, 4 Supporting,
+0 Review, 0 Drop.**
+
+---
+
+## Loopback addition — Hardware & MoE (2026-09-16)
+
+Five sources added. Full reasoning, scoring notes and the supporting thesis
+in **`sources/triage-hardware-moe-2026-09-16.md`**; summary table only here.
+
+| Source | Rel | Rec | Auth | Composite | Triage |
+|---|---|---|---|---|---|
+| `openai_broadcom_jalapeno` | 0.90 | 1.00 | 1.00 | **0.960** | Keep — Primary |
+| `ieee_inference_hardware` | 0.90 | 1.00 | 0.85 | **0.915** | Keep — Primary |
+| `dck_inference_battleground` | 0.95 | 1.00 | 0.75 | **0.905** | Keep — Primary |
+| `glm53_flash_zai` | 0.75 | 1.00 | 1.00 | **0.900** | Keep — Primary |
+| `open_weight_moe_wave_2026` | 0.85 | 1.00 | 0.60 | **0.820** | Keep — Primary |
+
+Closes the deck's largest remaining content gap: hardware, for an audience
+that manages infrastructure. Gate 1 approved by the user 2026-09-16, with
+scope held to **one new slide plus a line on the existing MoE slide** to
+protect the 20-30 minute runtime.
+
+**Running totals: 31 sources — 27 Primary, 4 Supporting, 0 Review, 0 Drop.**

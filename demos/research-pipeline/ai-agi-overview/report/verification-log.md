@@ -36,11 +36,27 @@ a matching knowledge file.
 None unsupported. Two items noted for the Gate 2b review rather than
 treated as failures:
 
-1. **[NUMBER DISCREPANCY]** GPT-6 Astra's ARC-AGI-3/FrontierMath scores
+1. ~~**[NUMBER DISCREPANCY]** GPT-6 Astra's ARC-AGI-3/FrontierMath scores
    differ between OpenAI's own page and press coverage (99.9% vs. 98.6%,
-   98% vs. 97.6%) — draft.md already flags this in Section 7/8 content
-   and in `gpt6_astra_agi_era.md`'s limitations; recommend a final check
-   against the official system card before locking slide copy.
+   98% vs. 97.6%)~~ — **RESOLVED 2026-09-10.** The official system card
+   (deploymentsafety.openai.com) carries only safety/alignment evaluations
+   and no capability benchmark table, so it could not settle this. The
+   ARC Prize Foundation could, and did: its own verified run
+   (arcprize.org/blog/astra, 2026-09-03) reports **62.7% for $26,098 with
+   the Standard harness and 99.9% for $18,817 with the Provider Adapter
+   harness**, the latter preserving reasoning state across requests so the
+   model can reuse prior work. The spread is a harness artifact, not a
+   factual dispute. Slide copy now cites the verified pair; see
+   `knowledge/arc_agi_chollet.md`. The FrontierMath figure (98% vs. 97.6%)
+   remains unresolved and is **not** stated on any slide.
+
+1b. **[UNCORROBORATED — REMOVED FROM SLIDES 2026-09-10]** The
+   press-reported claim that an NVIDIA-built system scored 100% on
+   ARC-AGI-3 using Claude Opus 5 over a ~30% base model does not appear in
+   ARC Prize's own Astra write-up and could not be corroborated against a
+   primary source. It has been removed from `gen-deck.mjs` and
+   `report/final.md` and replaced by the verified harness delta above. Do
+   not restore without a primary source.
 2. **[STALE-RISK]** METR's ~110-minute time horizon figure is from March
    2025; a January 2026 update ("Time Horizon 1.1") likely has a more
    current number — already flagged in `metr_long_tasks.md` and the

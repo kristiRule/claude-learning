@@ -328,6 +328,84 @@ divider('What AGI Is, and Isn’t', 'Nobody agrees on this one, and that’s a m
   pageNum(s);
 }
 
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'Two declarations, six days apart');
+  heading(s, 'Notice who is doing the declaring');
+
+  const claims = [
+    ['Greg Brockman', 'President, OpenAI  ·  Sept 3', AMBER,
+     '“Welcome to the AGI era.”',
+     'Sells: the model being called AGI.'],
+    ['Jensen Huang', 'CEO, NVIDIA  ·  Sept 8', GREEN,
+     '“AGI has arrived. Congratulations, OpenAI team.”',
+     'Sells: the 100,000+ GPUs it was trained on, with 400,000 more coming. He said so in the same post.'],
+  ];
+  const cw2 = (CW - 0.4) / 2;
+  claims.forEach(([who, role, accent, quote, stake], i) => {
+    const x = MX + i * (cw2 + 0.4);
+    s.addShape(pres.ShapeType.roundRect, { x, y: 1.8, w: cw2, h: 3.5, fill: { color: SLATE }, line: { color: accent, width: 1.25 }, rectRadius: 0.08 });
+    s.addText(who,  { x: x + 0.25, y: 1.95, w: cw2 - 0.5, h: 0.35, fontSize: 17, bold: true, color: accent, fontFace: FONT });
+    s.addText(role, { x: x + 0.25, y: 2.3,  w: cw2 - 0.5, h: 0.3,  fontSize: 11, color: MUTED, fontFace: FONT });
+    s.addText(quote,{ x: x + 0.25, y: 2.75, w: cw2 - 0.5, h: 1.2,  fontSize: 15, italic: true, color: OFFWH, fontFace: FONT, valign: 'top' });
+    s.addText(stake,{ x: x + 0.25, y: 4.05, w: cw2 - 0.5, h: 1.1,  fontSize: 12, color: LIGHT, fontFace: FONT, valign: 'top' });
+  });
+
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 5.55, w: CW, h: 0.85, fill: { color: SLATE }, line: { color: BLUE, width: 1 }, rectRadius: 0.08 });
+  s.addText([
+    { text: 'Neither of them is lying. Both of them have a stake.', options: { color: OFFWH, bold: true } },
+    { text: '  Worth asking who benefits before you accept a milestone.', options: { color: LIGHT } },
+  ], { x: MX + 0.25, y: 5.67, w: CW - 0.5, h: 0.6, fontSize: 14, fontFace: FONT, valign: 'middle' });
+
+  s.addNotes(
+    "So if the definitions don't settle it, look at who's doing the declaring. Because in one week, two of the most powerful people in this industry both said the milestone had been reached. On September third, Greg Brockman, president of OpenAI, opened the Astra briefing with welcome to the AGI era. Five days later, Jensen Huang, the CEO of NVIDIA, posted on X: AGI has arrived, congratulations OpenAI team. Now, I'm not putting these up here to be cynical, and I want to be careful about that, because I don't think either of them is lying. I think they both believe it. But notice what each of them sells. Brockman is describing his own product. And Huang, in the very same post where he declared AGI had arrived, mentioned that Astra was trained on more than a hundred thousand of NVIDIA's GPUs and that another four hundred thousand were coming online soon. He disclosed his own stake in the same breath, which is honestly more than a lot of people do. So this is the skill I actually want you to take from this section. When somebody announces a milestone, that's data, but it isn't proof. Ask what they sell. It's the same muscle we're about to use on benchmarks, and it's the single most useful habit you can have in a field that moves this fast and has this much money in it."
+  );
+  pageNum(s);
+}
+
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'One group tried to make it measurable');
+  heading(s, 'So what would we actually measure?');
+
+  // Chollet's definition, as the anchor claim.
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 1.8, w: CW, h: 1.15, fill: { color: SLATE }, line: { color: GREEN, width: 1 }, rectRadius: 0.08 });
+  s.addText([
+    { text: 'Intelligence is ', options: { color: LIGHT } },
+    { text: '“skill-acquisition efficiency over a scope of tasks.”', options: { color: OFFWH, bold: true } },
+    { text: '   François Chollet, ARC-AGI', options: { color: MUTED, italic: true } },
+  ], { x: MX + 0.25, y: 1.95, w: CW - 0.5, h: 0.85, fontSize: 15, fontFace: FONT, valign: 'middle' });
+
+  bulletsBlock(s, [
+    'Not what a model knows. How fast it picks up something new',
+    'Puzzles built to be easy for humans, hard for AI',
+    'ARC-AGI-3 gives an agent no instructions, rules, or goals',
+  ], { x: MX, y: 3.15, w: CW, h: 1.5, fontSize: 15.5 });
+
+  // The six-month arc on ARC-AGI-3.
+  const marks = [
+    ['Mar 2026', 'Benchmark launches', '0.51%', 'best AI'],
+    ['May 2026', 'GPT-5.5 / Opus 4.7', '0.43%', 'still near zero'],
+    ['Sep 2026', 'GPT-6 Astra', '62.7%', 'verified run'],
+  ];
+  const mw = (CW - 0.6) / 3;
+  marks.forEach(([when, what, num, cap], i) => {
+    const x = MX + i * (mw + 0.3);
+    s.addShape(pres.ShapeType.roundRect, { x, y: 4.85, w: mw, h: 1.65, fill: { color: SLATE }, line: { color: i === 2 ? GREEN : BLUE, width: 1 }, rectRadius: 0.08 });
+    s.addText(when, { x: x + 0.2, y: 4.98, w: mw - 0.4, h: 0.3, fontSize: 11.5, bold: true, color: BLUE, fontFace: FONT, charSpacing: 1 });
+    s.addText(num, { x: x + 0.2, y: 5.26, w: mw - 0.4, h: 0.6, fontSize: 27, bold: true, color: i === 2 ? GREEN : OFFWH, fontFace: FONT });
+    s.addText(`${what} · ${cap}`, { x: x + 0.2, y: 5.88, w: mw - 0.4, h: 0.5, fontSize: 10.5, color: LIGHT, fontFace: FONT, valign: 'top' });
+  });
+  s.addText('Human baseline on the same benchmark: 100%.', {
+    x: MX, y: 6.62, w: CW, h: 0.35, fontSize: 12.5, italic: true, color: MUTED, fontFace: FONT,
+  });
+
+  s.addNotes(
+    "Now, if you find that unsatisfying, that nobody agrees, one group did try to make it measurable, and it's worth knowing about because it's the only serious attempt to turn AGI from a vibe into a score. François Chollet, who wrote the Keras deep learning library, proposed this definition back in 2019: intelligence is skill-acquisition efficiency over a scope of tasks. Read that again, because the important word is efficiency. It is deliberately not measuring what a model already knows. It's measuring how fast it picks up something it has never seen. So he built a benchmark around that called ARC-AGI, and the tasks are designed to be easy for humans and hard for AI, using only the kind of reasoning a small child already has. The newest version, ARC-AGI-3, drops an agent into an interactive environment with no instructions, no rules, and no stated goals, and it has to figure out what the game even is. Now here's the part that should get your attention, and it's the single fastest-moving number I found while putting this talk together. When ARC-AGI-3 launched in March of this year, the best AI in the world scored about half of one percent. In May, GPT-5.5 got zero point four three percent and Claude Opus 4.7 got zero point one eight. Essentially zero. Six months after launch, GPT-6 Astra scored sixty-two point seven percent on an independently verified run. Humans, for reference, score one hundred percent. So: not solved, and the gap to human is still real. But zero to sixty-two in six months on the benchmark specifically built to be resistant to this is the kind of thing you want to have noticed before someone asks you about it."
+  );
+  pageNum(s);
+}
+
 // ============================================================================
 // HOW TO ACTUALLY USE IT
 // ============================================================================
@@ -350,6 +428,40 @@ divider('How to Use It', 'Genuinely useful if you touch software or infrastructu
   });
   s.addNotes(
     "Three layers, and separating them cleanly is the single most useful mental upgrade in this whole talk. The model is just the weights: Claude, GPT, Gemini, Llama, whatever, with no product around it at all. Inference is the act of actually running that model to produce an output, a compute and serving problem, which for a lot of you in this room is genuinely your problem to size and budget for. And the harness is everything wrapped around the model to make it into something you'd actually use: Claude Code, Cursor, the ChatGPT app, a help desk agent with memory and tool access. The harness layer is where almost all of the interesting, fast-moving engineering work is happening right now, and it's the layer most of you will actually build on."
+  );
+  pageNum(s);
+}
+
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'The layer underneath inference');
+  heading(s, 'Inference is now a hardware problem');
+
+  const stats = [
+    ['50 to 80%', AMBER, 'of the time, H100s running open models sit idle. Waiting on memory, not short of compute.'],
+    ['22% vs 19%', GREEN, 'growth in 2026 for specialised chips versus GPUs. Purpose-built inference silicon is outpacing them.'],
+    ['over half', BLUE,  'of tokens on AWS Bedrock already run on Amazon’s own Trainium chips, not on GPUs.'],
+  ];
+  const cw3 = (CW - 0.6) / 3;
+  stats.forEach(([big, accent, note], i) => {
+    const x = MX + i * (cw3 + 0.3);
+    s.addShape(pres.ShapeType.roundRect, { x, y: 1.75, w: cw3, h: 1.85, fill: { color: SLATE }, line: { color: accent, width: 1 }, rectRadius: 0.08 });
+    s.addText(big,  { x: x + 0.22, y: 1.88, w: cw3 - 0.44, h: 0.6, fontSize: 26, bold: true, color: accent, fontFace: FONT });
+    s.addText(note, { x: x + 0.22, y: 2.52, w: cw3 - 0.44, h: 1.0, fontSize: 11.5, color: LIGHT, fontFace: FONT, valign: 'top' });
+  });
+
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 3.85, w: CW, h: 1.55, fill: { color: SLATE }, line: { color: AMBER, width: 1.25 }, rectRadius: 0.08 });
+  s.addText('“When you deploy a GB200 or H100, you’re deploying something in the kilowatt range. The retail environment has a limited power budget and no real good cooling, so you can’t run a rack of GPUs.”', {
+    x: MX + 0.3, y: 4.0, w: CW - 0.6, h: 1.25, fontSize: 15, italic: true, color: OFFWH, fontFace: FONT, valign: 'top',
+  });
+
+  bulletsBlock(s, [
+    'Every token re-reads the model from memory, so decode is bandwidth-bound',
+    'HBM4 is shipping, doubling peak bandwidth. OpenAI built its own chip',
+  ], { x: MX, y: 5.6, w: CW, h: 1.0, fontSize: 13.5 });
+
+  s.addNotes(
+    "We just separated model, inference and harness. I want to spend one slide on what sits underneath inference, because this is the part that's actually your problem, and it changed a lot this year. Here's the mechanism, and it's worth understanding because it explains everything else. When a model generates text, it produces one token at a time, and for every single token it has to read the model's parameters back out of memory. Tens or hundreds of gigabytes, per token. That's not a compute problem, it's a memory bandwidth problem, and GPUs were designed for compute. The result is the first number on this slide: H100s running open models are reported idle somewhere between fifty and eighty percent of the time. Not because they're slow. Because they're waiting. So the whole industry is rebuilding around memory. HBM4 memory just went into production and roughly doubles peak bandwidth. OpenAI got impatient enough that they designed their own inference chip with Broadcom, called Jalapeno, from design to production in nine months, and it carries two hundred and sixteen gigabytes of HBM4. They claim one and a half to nearly two times the work per watt of NVIDIA's Blackwell, and I want to flag clearly that those numbers are their own, on a public benchmark nobody else has re-run yet. Same skepticism we applied to benchmarks earlier. The second number shows where the money is going: specialised chips are growing faster than GPUs now. And the third is the one I'd check yourself, because many of you already operate it. Amazon says more than half the tokens on Bedrock now run on their own Trainium silicon rather than GPUs. But the quote in the middle is the one I actually want you to take back to work, because it's the constraint none of the vendor announcements lead with. A GB200 or an H100 is a kilowatt-class device. Most real server rooms, branch offices and retail closets have a power budget and a cooling situation that simply cannot host a rack of those. That's not a budget problem you can buy your way out of, it's a physical one. Which is exactly why the smaller, power-efficient inference parts matter, and why this is going to land on your desk as a facilities question before it lands as a software one."
   );
   pageNum(s);
 }
@@ -501,12 +613,13 @@ divider('How Models Are Built', 'Two ideas that make everything after this easie
     s.addShape(pres.ShapeType.rect, { x: rightX + c*0.8, y: 2.2 + r*0.5, w: 0.65, h: 0.38, fill: { color: on ? GREEN : SLATE }, line: { color: MUTED, width: 0.5 } });
   }
   bulletsBlock(s, [
+    'Mixtral, 2023: each token routed to 2 of 8 experts. About 25%',
+    'GLM-5.3-Flash, Aug 2026: 8 of 288 experts. About 3%, and MIT-licensed',
     'DeepSeek-V4-Flash: 284B total parameters, only 13B active per token',
-    'Mixtral (Mistral): fully published, open-weight MoE architecture',
     'GPT-6 Astra: rumored around 10T parameters, MoE, unconfirmed by OpenAI',
-  ], { x: MX, y: 4.7, w: CW, h: 2.0, fontSize: 14.5 });
+  ], { x: MX, y: 4.6, w: CW, h: 2.1, fontSize: 14 });
   s.addNotes(
-    "Mixture of Experts is how the biggest models stay affordable to run. Instead of firing every parameter on every query like a dense model, an MoE model has a router that picks just a handful of specialized expert sub-networks for each input. Total parameter count can be enormous, but the active compute per query stays small. DeepSeek's V4-Flash is a great, fully confirmed example: 284 billion total parameters, but only 13 billion active on any given token, and DeepSeek reports it beats their own larger, more expensive model on every agentic benchmark they publish. Mistral's Mixtral is another fully open, fully documented MoE model. And GPT-6 Astra is rumored, key word rumored, not confirmed by OpenAI, to use something like a ten-trillion-parameter MoE setup. The practical takeaway: bigger isn't automatically better or more expensive, how a model uses its parameters matters just as much as how many it has. Hold onto that, because it explains a lot about the landscape we're about to walk through."
+    "Mixture of Experts is how the biggest models stay affordable to run. Instead of firing every parameter on every query like a dense model, an MoE model has a router that picks just a handful of specialized expert sub-networks for each input. Total parameter count can be enormous, but the active compute per query stays small. DeepSeek's V4-Flash is a great, fully confirmed example: 284 billion total parameters, but only 13 billion active on any given token, and DeepSeek reports it beats their own larger, more expensive model on every agentic benchmark they publish. Mistral's Mixtral is another fully open, fully documented MoE model. And GPT-6 Astra is rumored, key word rumored, not confirmed by OpenAI, to use something like a ten-trillion-parameter MoE setup. Now here's the part that surprised me, and it's the trend rather than any single model. When Mixtral came out it routed each token to two of its eight experts, so about a quarter of the model fired on any given token. GLM-5.3-Flash, which shipped in August of this year, routes each token to eight experts out of two hundred and eighty-eight. That's under three percent. In about two years the share of the model doing work on any one token fell by roughly a factor of ten, and that model is MIT-licensed with a million-token context window, so you can go download it. The practical takeaway: bigger isn't automatically better or more expensive, how a model uses its parameters matters just as much as how many it has. Hold onto that, because it explains a lot about the landscape we're about to walk through."
   );
   pageNum(s);
 }
@@ -563,6 +676,53 @@ divider('Popular Models', 'The landscape moves fast, but the shape of it is genu
   pageNum(s);
 }
 
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'Model families have a shape');
+  heading(s, 'One family, four tiers');
+
+  // Luna's orbit around Terra: the one ring that clarifies something the
+  // horizontal arrangement can't say on its own (Luna orbits Terra, not Sol).
+  s.addShape(pres.ShapeType.ellipse, {
+    x: 4.60, y: 2.30, w: 2.00, h: 2.00,
+    fill: { type: 'none' }, line: { color: SLATE, width: 1.25, dashType: 'dash' },
+  });
+  // Generation divider.
+  s.addShape(pres.ShapeType.line, {
+    x: 7.68, y: 1.95, w: 0, h: 3.35,
+    line: { color: MUTED, width: 1.5, dashType: 'sysDot' },
+  });
+  s.addText('GPT-5.6', { x: 5.98, y: 5.50, w: 1.6, h: 0.3, fontSize: 11, bold: true, color: MUTED, fontFace: FONT, align: 'right', charSpacing: 1.5 });
+  s.addText('GPT-6',   { x: 7.78, y: 5.50, w: 1.6, h: 0.3, fontSize: 11, bold: true, color: MUTED, fontFace: FONT, align: 'left',  charSpacing: 1.5 });
+
+  // Bodies. Diameter tracks the intelligence index.
+  s.addShape(pres.ShapeType.ellipse, { x: 1.50, y: 2.50, w: 1.60, h: 1.60, fill: { color: AMBER }, line: { width: 0 } });
+  s.addShape(pres.ShapeType.ellipse, { x: 5.18, y: 2.88, w: 0.85, h: 0.85, fill: { color: GREEN }, line: { width: 0 } });
+  s.addShape(pres.ShapeType.ellipse, { x: 5.44, y: 2.14, w: 0.34, h: 0.34, fill: { color: LIGHT }, line: { width: 0 } });
+  s.addShape(pres.ShapeType.star8,   { x: 8.85, y: 2.25, w: 2.10, h: 2.10, fill: { color: BLUE },  line: { width: 0 } });
+
+  const body = (x, name, color, role, data, y) => {
+    s.addText(name, { x: x - 1.6, y, w: 3.2, h: 0.32, fontSize: 15, bold: true, color, fontFace: FONT, align: 'center', charSpacing: 1.5 });
+    s.addText(role, { x: x - 1.6, y: y + 0.32, w: 3.2, h: 0.3, fontSize: 12, color: OFFWH, fontFace: FONT, align: 'center' });
+    s.addText(data, { x: x - 1.6, y: y + 0.62, w: 3.2, h: 0.3, fontSize: 10.5, color: MUTED, fontFace: FONT, align: 'center' });
+  };
+  body(2.30, 'SOL',   AMBER, 'The mass at the centre', 'index 47  ·  $5 / $30',  4.60);
+  body(5.60, 'TERRA', GREEN, 'The balanced default',   'index 42  ·  $2 / $12',  4.60);
+  body(9.90, 'ASTRA', BLUE,  'Outside the system',     'index 53  ·  $10 / $50', 4.60);
+  // Luna rides Terra's orbit, so its label sits above the ring.
+  s.addText('LUNA', { x: 4.00, y: 1.52, w: 3.2, h: 0.3, fontSize: 13, bold: true, color: LIGHT, fontFace: FONT, align: 'center', charSpacing: 1.5 });
+  s.addText('Small, quick, cheap  ·  index 38  ·  $0.20 / $1.20', { x: 3.60, y: 1.82, w: 4.0, h: 0.3, fontSize: 10.5, color: MUTED, fontFace: FONT, align: 'center' });
+
+  s.addText('Price shown as input / output per million tokens. Disc size tracks the intelligence index.', {
+    x: MX, y: 6.60, w: CW, h: 0.32, fontSize: 10.5, italic: true, color: MUTED, fontFace: FONT,
+  });
+
+  s.addNotes(
+    "Here's a thing worth knowing that will save you time whenever a new family drops: model families have a shape, and once you see the shape you can navigate any of them. This is OpenAI's current one, and I like it because they named it beautifully. Sol, Terra, Luna. The sun, the earth, the moon. And it isn't just branding, OpenAI has said explicitly that the number tells you the generation while the name tells you the capability tier, and those tiers are meant to outlive the version numbers. So a future Sol will still be the heavy one. Sol is the mass at the centre, your deepest reasoning. Terra is the balanced default, where you actually do most of your work. Luna is the small fast cheap one that rides along with Terra for the simple stuff. And then Astra, off to the right, is a star rather than a planet, because it's a different generation entirely, GPT-6 rather than 5.6. Now here's the part I want you to actually take away, and it's the numbers along the bottom. Look at the intelligence scores: thirty-eight, forty-two, forty-seven, fifty-three. That's a spread of about one point four times from cheapest to best. Now look at the prices: twenty cents to ten dollars per million input tokens. That's fifty times. Capability climbs gently and price climbs like a cliff. Which means the single biggest lever on your AI bill is not which vendor you pick, it's whether you reached for the top tier on work that didn't need it. One more useful detail: all three of the 5.6 tiers have exactly the same one-million-token context window. That's deliberate. The choice between them is purely intelligence against cost, never how much you can feed it."
+  );
+  pageNum(s);
+}
+
 // ============================================================================
 // PICKING THE RIGHT MODEL (BENCHMARKS)
 // ============================================================================
@@ -579,11 +739,15 @@ divider('Picking the Right Model', 'A real way to reason about which model fits 
     'How fresh is it? A 6-month-old score can already be stale',
   ], { x: MX, y: 1.85, w: CW, h: 3.0, fontSize: 16.5 });
   s.addShape(pres.ShapeType.roundRect, { x: MX, y: 5.05, w: CW, h: 1.35, fill: { color: SLATE }, line: { color: AMBER, width: 1 }, rectRadius: 0.08 });
-  s.addText('Real example: GPT-6 Astra scored 98 to 99.9% on ARC-AGI-3 with OpenAI’s own scaffold. A separate NVIDIA-built system scored just as high on the same eval using a much smaller base model.', {
-    x: MX + 0.25, y: 5.2, w: CW - 0.5, h: 1.05, fontSize: 13, color: LIGHT, fontFace: FONT, valign: 'top',
+  s.addText([
+    { text: 'Same model, same benchmark, same week: ', options: { color: LIGHT } },
+    { text: 'GPT-6 Astra scored 62.7% on ARC-AGI-3 with the standard harness, and 99.9% with a harness that lets it reuse its own prior work.', options: { color: OFFWH, bold: true } },
+    { text: ' Independently verified by ARC Prize, not self-reported.', options: { color: LIGHT } },
+  ], {
+    x: MX + 0.25, y: 5.2, w: CW - 0.5, h: 1.05, fontSize: 13, fontFace: FONT, valign: 'top',
   });
   s.addNotes(
-    "Before we get to which benchmark to use, a quick skill for reading any of them well. Four questions, always. What is it actually measuring? Usually one specific task, not general intelligence. Who ran it? A vendor's own reported number and an independently reproduced one deserve different levels of trust. What scaffold was it run with? Tool access and setup can matter as much as the base model. And how fresh is it? This field moves fast enough that a six-month-old score can already be out of date. Real example to make that concrete: GPT-6 Astra scored somewhere around ninety-eight to ninety-nine point nine percent on a benchmark called ARC-AGI-3, using OpenAI's own scaffolding. Around the same time, a system built by NVIDIA scored just as high on that same eval with a much smaller base model underneath. Same benchmark, same ballpark score, very different setups. That's not a reason to distrust benchmarks, it's just the context you need to read one well."
+    "Before we get to which benchmark to use, a quick skill for reading any of them well. Four questions, always. What is it actually measuring? Usually one specific task, not general intelligence. Who ran it? A vendor's own reported number and an independently reproduced one deserve different levels of trust. What scaffold was it run with? Tool access and setup can matter as much as the base model. And how fresh is it? This field moves fast enough that a six-month-old score can already be out of date. Real example to make all four of those concrete at once, and it's a good one. When GPT-6 Astra came out, OpenAI's own page said it scored ninety-nine point nine percent on ARC-AGI-3. Press coverage said ninety-eight point six. If you'd been reading quickly you'd assume somebody got the number wrong. Neither did. The ARC Prize Foundation, who own that benchmark, ran the model themselves and published both numbers: with their standard harness, Astra scored sixty-two point seven percent, and it cost twenty-six thousand dollars. With what they call a provider adapter harness, one that preserves the model's reasoning state between requests so it can reuse its own prior work, the same model scored ninety-nine point nine, and it actually cost less, about nineteen thousand. Sixty-two to ninety-nine, same model, same benchmark, same week. The only thing that changed was the scaffolding around it. That's not a reason to distrust benchmarks. It's the single best argument I have for why you ask what scaffold a number came from, and why an independently verified score and a vendor's own number are different objects."
   );
   pageNum(s);
 }
@@ -596,16 +760,65 @@ divider('Picking the Right Model', 'A real way to reason about which model fits 
     ['Picking a coding model?', 'Look at SWE-bench', 'Verified scores went from ~60% to ~100% in one year'],
     ['Picking a chat or writing assistant?', 'Look at LMArena', 'Blind human head-to-head voting, not a fixed test'],
     ['Picking an autonomous agent?', 'Look at METR’s time horizon', 'How long a task the model can finish unsupervised'],
+    ['Need it to handle the unfamiliar?', 'Look at ARC-AGI', 'Novel problems with no instructions. Humans still win here'],
   ];
+  // Four rows: tighter pitch than the earlier three-row version so the last
+  // card clears the bottom margin (1.65 + 3*1.42 + 1.18 = 7.09 < 7.5).
   rows.forEach(([label, tool, stat], i) => {
-    const y = 1.85 + i * 1.5;
-    s.addShape(pres.ShapeType.rect, { x: MX, y, w: 0.08, h: 1.25, fill: { color: BLUE }, line: { width: 0 } });
-    s.addText(label, { x: MX + 0.3, y, w: 4.4, h: 0.5, fontSize: 15, bold: true, color: OFFWH, fontFace: FONT });
-    s.addText(tool, { x: MX + 0.3, y: y + 0.48, w: 4.4, h: 0.5, fontSize: 14, bold: true, color: GREEN, fontFace: FONT });
-    s.addText(stat, { x: MX + 5.1, y: y + 0.1, w: 6.9, h: 1.0, fontSize: 12, italic: true, color: LIGHT, fontFace: FONT, valign: 'top' });
+    const y = 1.65 + i * 1.42;
+    s.addShape(pres.ShapeType.rect, { x: MX, y, w: 0.08, h: 1.18, fill: { color: BLUE }, line: { width: 0 } });
+    s.addText(label, { x: MX + 0.3, y, w: 4.4, h: 0.48, fontSize: 14.5, bold: true, color: OFFWH, fontFace: FONT });
+    s.addText(tool, { x: MX + 0.3, y: y + 0.46, w: 4.4, h: 0.48, fontSize: 13.5, bold: true, color: GREEN, fontFace: FONT });
+    s.addText(stat, { x: MX + 5.1, y: y + 0.08, w: 6.9, h: 0.95, fontSize: 12, italic: true, color: LIGHT, fontFace: FONT, valign: 'top' });
   });
   s.addNotes(
-    "Now that you know how to read one, here's the practical payoff. Instead of asking which model is best in the abstract, ask which benchmark matches the job. Picking a coding model? Look at SWE-bench, scores went from around sixty percent to near one hundred percent in a single year, which also tells you the benchmark is close to saturated for the top tier. Picking a chat or writing assistant? Look at LMArena, formerly LMSYS Chatbot Arena, which measures blind human head-to-head preference rather than a fixed test. Picking something to run autonomously, an agent that goes and does a multistep task on its own? Look at METR's time horizon metric, which has been doubling roughly every seven months."
+    "Now that you know how to read one, here's the practical payoff. Instead of asking which model is best in the abstract, ask which benchmark matches the job. Picking a coding model? Look at SWE-bench, scores went from around sixty percent to near one hundred percent in a single year, which also tells you the benchmark is close to saturated for the top tier. Picking a chat or writing assistant? Look at LMArena, formerly LMSYS Chatbot Arena, which measures blind human head-to-head preference rather than a fixed test. Picking something to run autonomously, an agent that goes and does a multistep task on its own? Look at METR's time horizon metric, which has been doubling roughly every seven months. And if what you actually need is for it to handle something genuinely unfamiliar, something not in anybody's training data, look at ARC-AGI, which is the one we just talked about in the AGI section. That's still the category where humans clearly outperform, so it's the honest one to check when somebody tells you a model will just figure it out."
+  );
+  pageNum(s);
+}
+
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'What that looks like in practice');
+  heading(s, 'Same prompt, two models, same day');
+
+  const cols = [
+    ['GPT-6 Astra', AMBER, 'Finished in ~26 min', [
+      'Beautiful, detailed 3D graphics',
+      'Polished UI, very few mistakes',
+      '“I wouldn’t describe this game as fun”',
+      'UI looks like every other AI-built game',
+    ]],
+    ['Fable 5.1', GREEN, 'Took considerably longer', [
+      '“Graphics were embarrassing by comparison”',
+      'UI looked like 2013-era Bootstrap',
+      '“The gameplay was far superior”',
+      'Real physics, far more to tune',
+    ]],
+  ];
+  const cw2 = (CW - 0.4) / 2;
+  cols.forEach(([name, accent, timing, points], i) => {
+    const x = MX + i * (cw2 + 0.4);
+    s.addShape(pres.ShapeType.roundRect, { x, y: 1.75, w: cw2, h: 3.55, fill: { color: SLATE }, line: { color: accent, width: 1.25 }, rectRadius: 0.08 });
+    s.addText(name, { x: x + 0.25, y: 1.9, w: cw2 - 0.5, h: 0.42, fontSize: 18, bold: true, color: accent, fontFace: FONT });
+    s.addText(timing, { x: x + 0.25, y: 2.3, w: cw2 - 0.5, h: 0.3, fontSize: 11, italic: true, color: MUTED, fontFace: FONT });
+    s.addText(points.map(t => ({ text: `›  ${t}`, options: { breakLine: true, paraSpaceAfter: 9 } })), {
+      x: x + 0.25, y: 2.68, w: cw2 - 0.5, h: 2.5, fontSize: 12.5, color: LIGHT, fontFace: FONT, lineSpacingMultiple: 1.25, valign: 'top',
+    });
+  });
+
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 5.5, w: CW, h: 0.85, fill: { color: SLATE }, line: { color: BLUE, width: 1 }, rectRadius: 0.08 });
+  s.addText([
+    { text: 'The model topping the benchmark was not the better tool for the job.', options: { color: OFFWH, bold: true } },
+    { text: '  Pick for the work, not for the leaderboard.', options: { color: LIGHT } },
+  ], { x: MX + 0.25, y: 5.62, w: CW - 0.5, h: 0.6, fontSize: 14, fontFace: FONT, valign: 'middle' });
+
+  s.addText('One developer’s hands-on test, Sept 2026. A single prompt, judged subjectively. Directional, not a benchmark.', {
+    x: MX, y: 6.5, w: CW, h: 0.35, fontSize: 11, italic: true, color: MUTED, fontFace: FONT,
+  });
+
+  s.addNotes(
+    "I want to close this section with something concrete, because everything I just said about matching the benchmark to the job can still feel abstract. Yesterday, the developer behind the YouTube channel Fireship ran a test I like a lot for its simplicity. He asked his kids what game they wanted, they said a rocket launch simulator, and he sent that exact same prompt to GPT-6 Astra and to Claude Fable 5.1 at the same moment. Astra came back first, in about twenty-six minutes, and the result looked genuinely great. Detailed 3D graphics, a polished interface, almost no bugs. And then he played it, and his verdict was, quote, I wouldn't exactly describe this game as fun to play. He also noticed something sharper: the interface looked almost identical to a lot of other AI-generated games he'd seen, that there's an obvious formula that makes them easy to spot. Fable took a lot longer, and when it finished, the graphics were, in his words, embarrassing by comparison. The UI looked like it was built with Bootstrap, which is a library older than some of the people in this room. But when he actually played it, the gameplay was far better. More ways to customize the rocket, actual scientific calculations behind the flight, more ways to succeed or fail. One model optimized for how it looked, the other for how it worked. Now, I want to be straight with you about what this is: it's one developer, one prompt, judged by him and his two kids. It is not a benchmark and I'm not presenting it as one. But it demonstrates the thing I most want you to leave with, which is that the model at the top of the leaderboard is not automatically the right model for your job. You have to try them on your actual work. Which, conveniently, is exactly the situation many of you are in when you open the model dropdown at work and see twenty options staring back at you."
   );
   pageNum(s);
 }
@@ -832,6 +1045,12 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
     ['OpenAI, Introducing ChatGPT (2022)', 'openai.com/index/chatgpt'],
     ['Gartner, 2026 Hype Cycle for Agentic AI', 'gartner.com/en/articles/hype-cycle-for-agentic-ai'],
     ['OpenAI Charter', 'openai.com/charter'],
+    ['Lewis et al., RAG (2020)', 'arxiv.org/abs/2005.11401'],
+    ['RAG vs. long context vs. agentic retrieval (2026)', 'see written report'],
+    ['Nov 2025 frontier triple launch', 'see written report'],
+    ['Fireship, Astra vs. Fable 5.1 (2026)', 'youtube.com/watch?v=2Xiljy4xzbc'],
+    ['OpenAI/Broadcom, Jalapeño chip (2026)', 'openai.com/index/openai-broadcom-jalapeno-inference-chip'],
+    ['IEEE Spectrum, Inference hardware rethink (2026)', 'spectrum.ieee.org/inference-hardware-revolution'],
   ];
   const right = [
     ['DeepMind, Levels of AGI (2023)', 'arxiv.org/abs/2311.02462'],
@@ -844,30 +1063,38 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
     ['EU, AI Act, Reg. 2024/1689', 'eur-lex.europa.eu/eli/reg/2024/1689'],
     ['Mistral, Mixtral of Experts (2024)', 'arxiv.org/pdf/2401.04088'],
     ['DeepSeek, V4-Flash-0731 (2026)', 'huggingface.co/blog/.../deepseek-v4-flash'],
+    ['Chollet / ARC Prize, ARC-AGI', 'arcprize.org/arc-agi'],
+    ['ARC Prize, GPT-6 Astra on ARC-AGI-3 (2026)', 'arcprize.org/blog/astra'],
+    ['Apr 2026 release density', 'see written report'],
+    ['Data Center Knowledge, Inference chip battleground', 'datacenterknowledge.com'],
+    ['Z.ai, GLM-5.3-Flash 320B-A18B (2026)', 'recipes.vllm.ai/zai-org/GLM-5.3-Flash'],
+    ['Requesty, Open-weight frontier Aug 2026', 'requesty.ai/blog/open-weight-frontier-august-2026'],
   ];
 
-  const colTop = 1.6, mY = 6.5;
-  const rowH = (mY - colTop) / 10;
+  // 16 rows per column now: the source set grew to 31 in the 2026-09-16
+  // hardware/MoE loopback.
+  const colTop = 1.40, mY = 6.62;
+  const rowH = (mY - colTop) / 16;
   s.addShape(pres.ShapeType.rect, { x: FULLW/2 - 0.02, y: colTop, w: 0.03, h: mY - colTop - 0.15, fill: { color: BLUE }, line: { width: 0 } });
 
   left.forEach((ref, i) => {
     const y = colTop + i * rowH;
-    s.addText(ref[0], { x: MX, y, w: 5.7, h: rowH * 0.62, fontSize: 10, bold: true, color: BLUE, fontFace: FONT, valign: 'top' });
-    s.addText(ref[1], { x: MX, y: y + rowH * 0.55, w: 5.7, h: rowH * 0.4, fontSize: 8.5, color: MUTED, fontFace: FONT, valign: 'top' });
+    s.addText(ref[0], { x: MX, y, w: 5.9, h: rowH * 0.6, fontSize: 8.2, bold: true, color: BLUE, fontFace: FONT, valign: 'top' });
+    s.addText(ref[1], { x: MX, y: y + rowH * 0.52, w: 5.9, h: rowH * 0.42, fontSize: 7, color: MUTED, fontFace: FONT, valign: 'top' });
   });
   right.forEach((ref, i) => {
     const x = FULLW/2 + 0.35, y = colTop + i * rowH;
-    s.addText(ref[0], { x, y, w: 5.7, h: rowH * 0.62, fontSize: 10, bold: true, color: BLUE, fontFace: FONT, valign: 'top' });
-    s.addText(ref[1], { x, y: y + rowH * 0.55, w: 5.7, h: rowH * 0.4, fontSize: 8.5, color: MUTED, fontFace: FONT, valign: 'top' });
+    s.addText(ref[0], { x, y, w: 5.9, h: rowH * 0.6, fontSize: 8.2, bold: true, color: BLUE, fontFace: FONT, valign: 'top' });
+    s.addText(ref[1], { x, y: y + rowH * 0.52, w: 5.9, h: rowH * 0.42, fontSize: 7, color: MUTED, fontFace: FONT, valign: 'top' });
   });
 
   s.addShape(pres.ShapeType.rect, { x: 0, y: mY, w: FULLW, h: 0.03, fill: { color: BLUE }, line: { width: 0 } });
-  s.addText('Methodology: 20 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
+  s.addText('Methodology: 31 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
     x: MX, y: mY + 0.1, w: CW, h: 0.8, fontSize: 9.5, italic: true, color: LIGHT, fontFace: FONT, valign: 'top',
   });
 
   s.addNotes(
-    "This is for anyone who wants to go deeper on any single claim. Twenty sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
+    "This is for anyone who wants to go deeper on any single claim. Thirty-one sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
   );
   pageNum(s);
 }
