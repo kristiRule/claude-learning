@@ -574,5 +574,21 @@
     "recency_score": 1.0,
     "authority_score": 0.75,
     "composite_score": 0.865
+  },
+  {
+    "short_name": "gartner_hype_cycle_oct2026",
+    "triage": "primary",
+    "type": "industry_report",
+    "title": "Gartner Hype Cycle for AI / Agentic AI — October 2026 position",
+    "speaker": null,
+    "publisher": "Gartner",
+    "date": "2026-10-01",
+    "citation_url": "https://www.gartner.com/en/articles/hype-cycle-for-artificial-intelligence",
+    "authority_tier": "medium-high",
+    "claim_type_default": "fact",
+    "relevance_score": 0.85,
+    "recency_score": 1.0,
+    "authority_score": 0.75,
+    "composite_score": 0.865
   }
 ]

@@ -1,7 +1,7 @@
 # Knowledge Index
 
 **Talk:** AI/AGI Overview lightning talk
-**Sources extracted:** 36 (11 original + 7 from Gate 2a loopback + 2 from
+**Sources extracted:** 37 (11 original + 7 from Gate 2a loopback + 2 from
 Gate 2b MoE addition + 2 added post-restructure for the "last 12 months"
 recap slide: `nov_2025_frontier_triple_launch`, `apr_2026_release_density`
 + 2 added 2026-09-10: `arc_agi_chollet` to close the AGI/benchmark gap and
@@ -13,7 +13,7 @@ recap slide: `nov_2025_frontier_triple_launch`, `apr_2026_release_density`
 **Date:** 2026-09-04 (last updated 2026-10-17)
 **Triage below reflects the Stage 1.5 numeric 40/30/30 rescore** — see
 `sources/triage-report.md` for per-source relevance/recency/authority
-scores. 32 Primary, 4 Supporting, 0 Review, 0 Drop.
+scores. 33 Primary, 4 Supporting, 0 Review, 0 Drop.
 
 | Short name | Title (truncated) | Type | Date | Triage | Fetch method |
 |---|---|---|---|---|---|
@@ -53,6 +53,7 @@ scores. 32 Primary, 4 Supporting, 0 Review, 0 Drop.
 | meta_muse_wonder | Meta Muse Wonder — frontier, closed weights | lab_publication | 2026-10-12 | primary | web_search_primary_plus_press |
 | gemini_4_argon | Gemini 4 Argon & benchmark fragmentation | lab_publication | 2026-10-12 | primary | web_search_multi_source |
 | oct2026_hardware_wave | Oct 2026 inference hardware wave | industry_report | 2026-10 | primary | web_search_multi_source |
+| gartner_hype_cycle_oct2026 | Gartner Hype Cycle — Oct 2026 position | industry_report | 2026-10-01 | primary | web_search_multi_source |
 
 ## Fetch method breakdown
 
@@ -111,6 +112,11 @@ scores. 32 Primary, 4 Supporting, 0 Review, 0 Drop.
 - **open_weight_moe_wave_2026** — lowest authority in the set (0.82). Only
   GLM-5.3-Flash's numbers were verified first-party (`glm53_flash_zai`).
   Verify Hy4 / Qwen3.8-Flash / MiniMax M3 against model cards before use.
+- **gartner_hype_cycle_oct2026** — supersedes `gartner_hype_cycle_2026`
+  for anything after April 2026. Gartner's reports are paywalled; figures
+  are corroborated across secondary summaries, not read from the primary.
+  The "<30% satisfied" figure surveys AI leaders reporting on their CEOs,
+  not CEOs directly — phrase carefully.
 - **[CORRECTION 2026-10-17]** GPT-6.1 is **not** a successor flagship to
   GPT-6 Astra. GPT-6.1 Sol is the mid-tier model at ~1/5 Astra's price;
   Astra remains OpenAI's flagship. Caught before it reached a slide.
