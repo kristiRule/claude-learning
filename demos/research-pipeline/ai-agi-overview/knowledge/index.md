@@ -1,17 +1,19 @@
 # Knowledge Index
 
 **Talk:** AI/AGI Overview lightning talk
-**Sources extracted:** 31 (11 original + 7 from Gate 2a loopback + 2 from
+**Sources extracted:** 36 (11 original + 7 from Gate 2a loopback + 2 from
 Gate 2b MoE addition + 2 added post-restructure for the "last 12 months"
 recap slide: `nov_2025_frontier_triple_launch`, `apr_2026_release_density`
 + 2 added 2026-09-10: `arc_agi_chollet` to close the AGI/benchmark gap and
 `fireship_astra_vs_fable`, a user-supplied hands-on model comparison
 + 5 added 2026-09-16 in the hardware/MoE loopback — see
-`sources/triage-hardware-moe-2026-09-16.md`)
-**Date:** 2026-09-04 (last updated 2026-09-16)
+`sources/triage-hardware-moe-2026-09-16.md`
++ 5 added 2026-10-17 in the October refresh loopback — see
+`sources/triage-oct-refresh-2026-10-17.md`)
+**Date:** 2026-09-04 (last updated 2026-10-17)
 **Triage below reflects the Stage 1.5 numeric 40/30/30 rescore** — see
 `sources/triage-report.md` for per-source relevance/recency/authority
-scores. 27 Primary, 4 Supporting, 0 Review, 0 Drop.
+scores. 32 Primary, 4 Supporting, 0 Review, 0 Drop.
 
 | Short name | Title (truncated) | Type | Date | Triage | Fetch method |
 |---|---|---|---|---|---|
@@ -46,6 +48,11 @@ scores. 27 Primary, 4 Supporting, 0 Review, 0 Drop.
 | dck_inference_battleground | Inference Becomes the Next AI Chip Battleground | industry_report | 2026 | primary | web_fetch_primary |
 | glm53_flash_zai | GLM-5.3-Flash — 320B-A18B multimodal MoE | lab_publication | 2026-08-26 | primary | web_search_config_verified |
 | open_weight_moe_wave_2026 | Five open-weight releases in nine days | industry_report | 2026-08 | primary | web_fetch_primary |
+| anthropic_opus_5_5 | Introducing Claude Opus 5.5 | lab_publication | 2026-09-22 | primary | web_search_primary |
+| openai_gpt61_sol | GPT-6.1 Sol — mid-tier at 1/5 Astra's price | lab_publication | 2026-09-29 | primary | web_search_primary |
+| meta_muse_wonder | Meta Muse Wonder — frontier, closed weights | lab_publication | 2026-10-12 | primary | web_search_primary_plus_press |
+| gemini_4_argon | Gemini 4 Argon & benchmark fragmentation | lab_publication | 2026-10-12 | primary | web_search_multi_source |
+| oct2026_hardware_wave | Oct 2026 inference hardware wave | industry_report | 2026-10 | primary | web_search_multi_source |
 
 ## Fetch method breakdown
 
@@ -104,6 +111,21 @@ scores. 27 Primary, 4 Supporting, 0 Review, 0 Drop.
 - **open_weight_moe_wave_2026** — lowest authority in the set (0.82). Only
   GLM-5.3-Flash's numbers were verified first-party (`glm53_flash_zai`).
   Verify Hy4 / Qwen3.8-Flash / MiniMax M3 against model cards before use.
+- **[CORRECTION 2026-10-17]** GPT-6.1 is **not** a successor flagship to
+  GPT-6 Astra. GPT-6.1 Sol is the mid-tier model at ~1/5 Astra's price;
+  Astra remains OpenAI's flagship. Caught before it reached a slide.
+- **anthropic_opus_5_5** — "40% cheaper, 30% faster" are Anthropic's own
+  figures on unspecified "typical workloads". Attribute.
+- **meta_muse_wonder** — MemoryBench standing is Meta-reported on a
+  benchmark matching its headline feature. Extraction relied on press
+  because Meta published no research post.
+- **gemini_4_argon** — individual benchmark percentages are snapshots that
+  move with harness and version. The *pattern* (no single leader) is the
+  durable claim; treat any one number as perishable.
+- **oct2026_hardware_wave** — Vera Rubin's "5× throughput, 10× lower cost
+  per token" is NVIDIA's rack-scale claim, not independent. Jalapeño
+  unveiling date conflicts across sources (Aug vs June 2026); no slide
+  states a date.
 - **[SYNTHESIS, NOT SOURCED]** "MoE makes the memory bottleneck worse" is
   reasoning, not a sourced claim — IEEE Spectrum does not discuss MoE at
   all. It follows (all experts resident in memory, only ~3-6% computing, so

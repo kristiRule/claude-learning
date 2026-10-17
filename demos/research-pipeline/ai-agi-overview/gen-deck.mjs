@@ -190,11 +190,12 @@ function vocabSlide(kick, title, terms) {
     x: MX + 0.3, y: 2.7, w: CW - 0.6, h: 0.6, fontSize: 13, color: MUTED, fontFace: FONT,
   });
   bulletsBlock(s, [
-    'A major lab just shipped a model it calls the most capable it’s built',
+    'In the six weeks since: Anthropic, OpenAI, Google and Meta all shipped again',
+    'The headline feature each time was price, not capability',
     'Gen-AI adoption hit 53% of the population in 3 years, faster than the PC or internet',
-  ], { x: MX, y: 3.7, w: CW, h: 1.6, fontSize: 17 });
+  ], { x: MX, y: 3.6, w: CW, h: 2.0, fontSize: 16 });
   s.addNotes(
-    "Here's why I think right now is a genuinely fun moment to be paying attention: three days before I put this talk together, OpenAI launched a model called GPT-6 Astra, and their president opened the press briefing by saying we're entering the AGI era. We'll dig into whether that label actually holds up in a few minutes, and it's a more interesting question than a yes or no. But the pace itself is the real story. Stanford's own AI Index found generative AI hit fifty-three percent population adoption in three years, faster than the PC, faster than the internet. That's the speed we're working with, and it's speeding up."
+    "Here's why I think right now is a genuinely interesting moment to be paying attention. In September, OpenAI launched a model called GPT-6 Astra and their president opened the press briefing by saying we're entering the AGI era. We'll dig into whether that label holds up in a few minutes, and it's a more interesting question than a yes or no. But here's what's happened in the six weeks since, and it's the part I find more telling. Anthropic shipped Opus 5.5. OpenAI shipped GPT-6.1 Sol. Google shipped Gemini 4 Argon and Meta shipped its first ever frontier model, both on the same day. Every major lab, inside six weeks. And here's the thing worth noticing: almost none of them led with being smarter. Opus 5.5's headline was that it costs forty percent less than Opus 5. GPT-6.1 Sol's was near-flagship performance at a fifth of the price. The competition right now is on cost, not capability. Underneath all of it, Stanford's AI Index found generative AI hit fifty-three percent population adoption in three years, faster than the PC, faster than the internet. That's the speed we're working with."
   );
   pageNum(s);
 }
@@ -244,22 +245,23 @@ divider('What AI Is', 'A fast grounding: how we got here, and what’s happening
     ['Apr 2026', 'Densest release month yet: Gemma 4, Llama 4, Opus 4.7, GPT-5.5, Grok 4.3'],
     ['Summer 2026', 'Opus 5, Fable, and GPT Sol arrive: agents start setting their own direction'],
     ['Sep 2026', 'GPT-6 Astra launches; OpenAI calls it the AGI era'],
+    ['Oct 2026', 'Meta and Google ship frontier models on the same day; prices fall across the board'],
   ];
   const lineY = 4.1;
   const lineX0 = 1.3, lineX1 = FULLW - 1.3;
   s.addShape(pres.ShapeType.line, { x: lineX0, y: lineY, w: lineX1 - lineX0, h: 0, line: { color: GREEN, width: 2 } });
   const xs2 = events.map((_, i) => lineX0 + ((lineX1 - lineX0) / (events.length - 1)) * i);
-  const labelW2 = 2.35;
+  const labelW2 = 2.02; // tightened from 2.35 to fit a sixth event
   events.forEach(([yr, txt], i) => {
     const x = xs2[i];
     let boxX = x - labelW2 / 2;
     boxX = Math.max(MX, Math.min(boxX, FULLW - MX - labelW2));
     s.addShape(pres.ShapeType.ellipse, { x: x - 0.07, y: lineY - 0.07, w: 0.14, h: 0.14, fill: { color: GREEN }, line: { width: 0 } });
-    s.addText(yr, { x: boxX, y: lineY - 0.6, w: labelW2, h: 0.4, fontSize: 15, bold: true, color: OFFWH, fontFace: FONT, align: 'center' });
-    s.addText(txt, { x: boxX, y: lineY + 0.22, w: labelW2, h: 1.9, fontSize: 10, color: LIGHT, fontFace: FONT, align: 'center', valign: 'top' });
+    s.addText(yr, { x: boxX, y: lineY - 0.6, w: labelW2, h: 0.4, fontSize: 14, bold: true, color: OFFWH, fontFace: FONT, align: 'center' });
+    s.addText(txt, { x: boxX, y: lineY + 0.22, w: labelW2, h: 1.9, fontSize: 9.5, color: LIGHT, fontFace: FONT, align: 'center', valign: 'top' });
   });
   s.addNotes(
-    "Here's the same story, zoomed all the way into just the last twelve months, because this is really where the pace becomes obvious. November 2025: three frontier models ship within eleven days of each other, GPT-5.1, Gemini 3 Pro, and Claude Opus 4.5. I'm pulling the personal-account color here from DHH, who called November 24th, the day Opus 4.5 shipped, his own dividing line for agentic coding, before that he was directing every step, after it he wasn't. Honestly, that tracks with my own experience too, that's roughly when this stopped feeling like autocomplete and started feeling like delegating. By February 2026, he says agents were already good enough that his own company, 37signals, shipped Basecamp 5 leaning on them, though he's honest that some of the unguided vibe-coded parts needed architectural cleanup afterward, a good reminder that this stuff still needs real engineering discipline. April 2026 was probably the single densest release month yet, Gemma 4, Llama 4, Claude Opus 4.7, GPT-5.5, Grok 4.3, practically every major lab shipped something. And by this summer, with Opus 5, Fable, and GPT Sol, he describes a further shift: agents that set their own direction on a problem instead of being told each step. That brings us right back to September, and Astra. Twelve months, and the gaps between releases are now measured in weeks, not years."
+    "Here's the same story, zoomed all the way into just the last twelve months, because this is really where the pace becomes obvious. November 2025: three frontier models ship within eleven days of each other, GPT-5.1, Gemini 3 Pro, and Claude Opus 4.5. I'm pulling the personal-account color here from DHH, who called November 24th, the day Opus 4.5 shipped, his own dividing line for agentic coding, before that he was directing every step, after it he wasn't. Honestly, that tracks with my own experience too, that's roughly when this stopped feeling like autocomplete and started feeling like delegating. By February 2026, he says agents were already good enough that his own company, 37signals, shipped Basecamp 5 leaning on them, though he's honest that some of the unguided vibe-coded parts needed architectural cleanup afterward, a good reminder that this stuff still needs real engineering discipline. April 2026 was probably the single densest release month yet, Gemma 4, Llama 4, Claude Opus 4.7, GPT-5.5, Grok 4.3, practically every major lab shipped something. And by this summer, with Opus 5, Fable, and GPT Sol, he describes a further shift: agents that set their own direction on a problem instead of being told each step. That brings us to September, and Astra. And then October, which is honestly the one that made me redo this slide: Meta shipped its first ever frontier model and Google shipped Gemini 4 Argon, on the same day, the twelfth. Twelve months, and the gaps between releases are now measured in weeks, not years, and sometimes in hours."
   );
   pageNum(s);
 }
@@ -461,7 +463,7 @@ divider('How to Use It', 'Genuinely useful if you touch software or infrastructu
   ], { x: MX, y: 5.6, w: CW, h: 1.0, fontSize: 13.5 });
 
   s.addNotes(
-    "We just separated model, inference and harness. I want to spend one slide on what sits underneath inference, because this is the part that's actually your problem, and it changed a lot this year. Here's the mechanism, and it's worth understanding because it explains everything else. When a model generates text, it produces one token at a time, and for every single token it has to read the model's parameters back out of memory. Tens or hundreds of gigabytes, per token. That's not a compute problem, it's a memory bandwidth problem, and GPUs were designed for compute. The result is the first number on this slide: H100s running open models are reported idle somewhere between fifty and eighty percent of the time. Not because they're slow. Because they're waiting. So the whole industry is rebuilding around memory. HBM4 memory just went into production and roughly doubles peak bandwidth. OpenAI got impatient enough that they designed their own inference chip with Broadcom, called Jalapeno, from design to production in nine months, and it carries two hundred and sixteen gigabytes of HBM4. They claim one and a half to nearly two times the work per watt of NVIDIA's Blackwell, and I want to flag clearly that those numbers are their own, on a public benchmark nobody else has re-run yet. Same skepticism we applied to benchmarks earlier. The second number shows where the money is going: specialised chips are growing faster than GPUs now. And the third is the one I'd check yourself, because many of you already operate it. Amazon says more than half the tokens on Bedrock now run on their own Trainium silicon rather than GPUs. But the quote in the middle is the one I actually want you to take back to work, because it's the constraint none of the vendor announcements lead with. A GB200 or an H100 is a kilowatt-class device. Most real server rooms, branch offices and retail closets have a power budget and a cooling situation that simply cannot host a rack of those. That's not a budget problem you can buy your way out of, it's a physical one. Which is exactly why the smaller, power-efficient inference parts matter, and why this is going to land on your desk as a facilities question before it lands as a software one."
+    "We just separated model, inference and harness. I want to spend one slide on what sits underneath inference, because this is the part that's actually your problem, and it changed a lot this year. Here's the mechanism, and it's worth understanding because it explains everything else. When a model generates text, it produces one token at a time, and for every single token it has to read the model's parameters back out of memory. Tens or hundreds of gigabytes, per token. That's not a compute problem, it's a memory bandwidth problem, and GPUs were designed for compute. The result is the first number on this slide: H100s running open models are reported idle somewhere between fifty and eighty percent of the time. Not because they're slow. Because they're waiting. So the whole industry is rebuilding around memory. HBM4 memory just went into production and roughly doubles peak bandwidth. OpenAI got impatient enough that they designed their own inference chip with Broadcom, called Jalapeno, from design to production in nine months, and it carries two hundred and sixteen gigabytes of HBM4. They claim one and a half to nearly two times the work per watt of NVIDIA's Blackwell, and I want to flag clearly that those numbers are their own, on a public benchmark nobody else has re-run yet. Same skepticism we applied to benchmarks earlier. The second number shows where the money is going: specialised chips are growing faster than GPUs now. And the third is the one I'd check yourself, because many of you already operate it. Amazon says more than half the tokens on Bedrock now run on their own Trainium silicon rather than GPUs. But the quote in the middle is the one I actually want you to take back to work, because it's the constraint none of the vendor announcements lead with. A GB200 or an H100 is a kilowatt-class device. Most real server rooms, branch offices and retail closets have a power budget and a cooling situation that simply cannot host a rack of those. That's not a budget problem you can buy your way out of, it's a physical one. Which is exactly why the smaller, power-efficient inference parts matter, and why this is going to land on your desk as a facilities question before it lands as a software one. Two quick updates from just this month, because this moves fast. NVIDIA's Vera Rubin is now actually shipping, and at rack scale they claim five times Blackwell's throughput at ten times lower cost per token. Microsoft announced Maia 300, their third in-house accelerator, so at this point every major cloud builds its own inference silicon: Amazon has Trainium, Google has TPUs, Microsoft has Maia, and OpenAI has Jalapeno. And the one I'd actually watch: at the Open Compute Summit this month NVIDIA handed its Vera Rubin rack designs to the Open Compute Project and AMD published an open rack blueprint of its own. When frontier rack designs become open specifications, your question stops being can we buy this and starts being can we build to this spec. That's a very different conversation, and it's one you'll be having."
   );
   pageNum(s);
 }
@@ -655,7 +657,7 @@ divider('Popular Models', 'The landscape moves fast, but the shape of it is genu
   kicker(s, 'Open-weight models');
   heading(s, 'Downloadable, often self-hostable');
   const rows = [
-    ['Meta · Llama', 'The most widely adopted open baseline for self-hosting'],
+    ['Meta · Llama', 'The most adopted open baseline — but Meta’s Oct 2026 frontier models are closed'],
     ['Mistral', 'Efficient open models, strong at coding, easy to run lean'],
     ['Alibaba · Qwen', 'Strong multilingual and coding performance at low cost'],
     ['DeepSeek', 'Frontier-level open reasoning at a fraction of the usual cost'],
@@ -671,7 +673,7 @@ divider('Popular Models', 'The landscape moves fast, but the shape of it is genu
     x: MX + 0.25, y: 6.35, w: CW - 0.5, h: 0.4, fontSize: 12.5, bold: true, color: GREEN, fontFace: FONT, valign: 'middle',
   });
   s.addNotes(
-    "On the open-weight side, and this is genuinely good news for anyone in this room managing your own compute: Meta's Llama family is the most widely adopted open baseline for self-hosting. Mistral makes efficient open models that punch above their size, especially at coding, and are easy to run lean. Alibaba's Qwen family is strong on multilingual and coding performance at low cost. And DeepSeek has been shipping frontier-level open reasoning at a fraction of the usual cost, which is exactly the Mixture of Experts trick we just walked through, 284 billion parameters total, only 13 billion firing per token. One callout worth remembering: open-weight is not open-source. You can download and run the weights, but the training data and often the training code stay closed. That distinction trips people up constantly."
+    "On the open-weight side, and this is genuinely good news for anyone in this room managing your own compute: Meta's Llama family is the most widely adopted open baseline for self-hosting. But I need to flag a real plot twist here, because it happened days ago and it matters. On October twelfth Meta shipped its first frontier-class models, Muse Wonder, and the weights are closed. Not downloadable. The company that made open weights mainstream went closed for its best model, and only released the weaker sibling under an open licence. Meanwhile, in the same season, Chinese labs shipped MIT-licensed three-hundred-billion-parameter models you can download today. So the two camps didn't just compete this year, they partly swapped positions. Don't assume a lab's licensing posture from its reputation; check the specific model. Mistral makes efficient open models that punch above their size, especially at coding, and are easy to run lean. Alibaba's Qwen family is strong on multilingual and coding performance at low cost. And DeepSeek has been shipping frontier-level open reasoning at a fraction of the usual cost, which is exactly the Mixture of Experts trick we just walked through, 284 billion parameters total, only 13 billion firing per token. One callout worth remembering: open-weight is not open-source. You can download and run the weights, but the training data and often the training code stay closed. That distinction trips people up constantly."
   );
   pageNum(s);
 }
@@ -718,7 +720,7 @@ divider('Popular Models', 'The landscape moves fast, but the shape of it is genu
   });
 
   s.addNotes(
-    "Here's a thing worth knowing that will save you time whenever a new family drops: model families have a shape, and once you see the shape you can navigate any of them. This is OpenAI's current one, and I like it because they named it beautifully. Sol, Terra, Luna. The sun, the earth, the moon. And it isn't just branding, OpenAI has said explicitly that the number tells you the generation while the name tells you the capability tier, and those tiers are meant to outlive the version numbers. So a future Sol will still be the heavy one. Sol is the mass at the centre, your deepest reasoning. Terra is the balanced default, where you actually do most of your work. Luna is the small fast cheap one that rides along with Terra for the simple stuff. And then Astra, off to the right, is a star rather than a planet, because it's a different generation entirely, GPT-6 rather than 5.6. Now here's the part I want you to actually take away, and it's the numbers along the bottom. Look at the intelligence scores: thirty-eight, forty-two, forty-seven, fifty-three. That's a spread of about one point four times from cheapest to best. Now look at the prices: twenty cents to ten dollars per million input tokens. That's fifty times. Capability climbs gently and price climbs like a cliff. Which means the single biggest lever on your AI bill is not which vendor you pick, it's whether you reached for the top tier on work that didn't need it. One more useful detail: all three of the 5.6 tiers have exactly the same one-million-token context window. That's deliberate. The choice between them is purely intelligence against cost, never how much you can feed it."
+    "Here's a thing worth knowing that will save you time whenever a new family drops: model families have a shape, and once you see the shape you can navigate any of them. This is OpenAI's current one, and I like it because they named it beautifully. Sol, Terra, Luna. The sun, the earth, the moon. And it isn't just branding, OpenAI has said explicitly that the number tells you the generation while the name tells you the capability tier, and those tiers are meant to outlive the version numbers. So a future Sol will still be the heavy one, and that already came true: OpenAI shipped GPT-6.1 Sol at the end of September, same tier name, new generation, at about a fifth of Astra's price. Sol is the mass at the centre, your deepest reasoning. Terra is the balanced default, where you actually do most of your work. Luna is the small fast cheap one that rides along with Terra for the simple stuff. And then Astra, off to the right, is a star rather than a planet, because it's a different generation entirely, GPT-6 rather than 5.6. Now here's the part I want you to actually take away, and it's the numbers along the bottom. Look at the intelligence scores: thirty-eight, forty-two, forty-seven, fifty-three. That's a spread of about one point four times from cheapest to best. Now look at the prices: twenty cents to ten dollars per million input tokens. That's fifty times. Capability climbs gently and price climbs like a cliff. Which means the single biggest lever on your AI bill is not which vendor you pick, it's whether you reached for the top tier on work that didn't need it. One more useful detail: all three of the 5.6 tiers have exactly the same one-million-token context window. That's deliberate. The choice between them is purely intelligence against cost, never how much you can feed it."
   );
   pageNum(s);
 }
@@ -765,14 +767,19 @@ divider('Picking the Right Model', 'A real way to reason about which model fits 
   // Four rows: tighter pitch than the earlier three-row version so the last
   // card clears the bottom margin (1.65 + 3*1.42 + 1.18 = 7.09 < 7.5).
   rows.forEach(([label, tool, stat], i) => {
-    const y = 1.65 + i * 1.42;
-    s.addShape(pres.ShapeType.rect, { x: MX, y, w: 0.08, h: 1.18, fill: { color: BLUE }, line: { width: 0 } });
+    const y = 1.58 + i * 1.28; // tightened to make room for the fragmentation line
+    s.addShape(pres.ShapeType.rect, { x: MX, y, w: 0.08, h: 1.08, fill: { color: BLUE }, line: { width: 0 } });
     s.addText(label, { x: MX + 0.3, y, w: 4.4, h: 0.48, fontSize: 14.5, bold: true, color: OFFWH, fontFace: FONT });
     s.addText(tool, { x: MX + 0.3, y: y + 0.46, w: 4.4, h: 0.48, fontSize: 13.5, bold: true, color: GREEN, fontFace: FONT });
     s.addText(stat, { x: MX + 5.1, y: y + 0.08, w: 6.9, h: 0.95, fontSize: 12, italic: true, color: LIGHT, fontFace: FONT, valign: 'top' });
   });
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 6.42, w: CW, h: 0.72, fill: { color: SLATE }, line: { color: AMBER, width: 1 }, rectRadius: 0.07 });
+  s.addText([
+    { text: 'As of Oct 2026 no model leads every benchmark. ', options: { color: OFFWH, bold: true } },
+    { text: 'Gemini 4 Argon leads DeepSWE, Opus 5.5 leads Terminal-Bench, Astra leads FrontierSWE. All three are coding benchmarks.', options: { color: LIGHT } },
+  ], { x: MX + 0.25, y: 6.5, w: CW - 0.5, h: 0.56, fontSize: 12.5, fontFace: FONT, valign: 'middle' });
   s.addNotes(
-    "Now that you know how to read one, here's the practical payoff. Instead of asking which model is best in the abstract, ask which benchmark matches the job. Picking a coding model? Look at SWE-bench, scores went from around sixty percent to near one hundred percent in a single year, which also tells you the benchmark is close to saturated for the top tier. Picking a chat or writing assistant? Look at LMArena, formerly LMSYS Chatbot Arena, which measures blind human head-to-head preference rather than a fixed test. Picking something to run autonomously, an agent that goes and does a multistep task on its own? Look at METR's time horizon metric, which has been doubling roughly every seven months. And if what you actually need is for it to handle something genuinely unfamiliar, something not in anybody's training data, look at ARC-AGI, which is the one we just talked about in the AGI section. That's still the category where humans clearly outperform, so it's the honest one to check when somebody tells you a model will just figure it out."
+    "Now that you know how to read one, here's the practical payoff. Instead of asking which model is best in the abstract, ask which benchmark matches the job. Picking a coding model? Look at SWE-bench, scores went from around sixty percent to near one hundred percent in a single year, which also tells you the benchmark is close to saturated for the top tier. Picking a chat or writing assistant? Look at LMArena, formerly LMSYS Chatbot Arena, which measures blind human head-to-head preference rather than a fixed test. Picking something to run autonomously, an agent that goes and does a multistep task on its own? Look at METR's time horizon metric, which has been doubling roughly every seven months. Now, the bar at the bottom is the single most useful thing on this slide as of right now, and it's new. There is no best model any more. In October, Gemini 4 Argon led one coding benchmark called DeepSWE at seventy-eight percent. Claude Opus 5.5 led a different one, Terminal-Bench, where Argon trailed by nine points. And GPT-6 Astra led a third one, FrontierSWE, where Argon trailed by ten. Those are all coding benchmarks. So it isn't even that models specialise by domain, they specialise within a domain. Which means if someone tells you they've found the best model, the honest follow-up is: best at what, measured how? And if what you actually need is for it to handle something genuinely unfamiliar, something not in anybody's training data, look at ARC-AGI, which is the one we just talked about in the AGI section. That's still the category where humans clearly outperform, so it's the honest one to check when somebody tells you a model will just figure it out."
   );
   pageNum(s);
 }
@@ -1034,7 +1041,8 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
   kicker(s, 'Appendix');
   heading(s, 'Sources and Research Methodology');
 
-  const left = [
+  // 36 sources: three columns now, two no longer fit legibly.
+  const refs = [
     ['DHH, Lex Fridman #501 (2026)', 'lexfridman.com/dhh-2'],
     ['Two Minute Papers, Qwen3.8-27B (2026)', 'youtube.com/watch?v=wMl6c_r0ubw'],
     ['Woods, The AI-Driven Leader', 'amazon.com/dp/B0DB8QL3ZK'],
@@ -1051,8 +1059,6 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
     ['Fireship, Astra vs. Fable 5.1 (2026)', 'youtube.com/watch?v=2Xiljy4xzbc'],
     ['OpenAI/Broadcom, Jalapeño chip (2026)', 'openai.com/index/openai-broadcom-jalapeno-inference-chip'],
     ['IEEE Spectrum, Inference hardware rethink (2026)', 'spectrum.ieee.org/inference-hardware-revolution'],
-  ];
-  const right = [
     ['DeepMind, Levels of AGI (2023)', 'arxiv.org/abs/2311.02462'],
     ['OpenAI, GPT-6 Astra (2026)', 'openai.com/index/gpt-6-astra'],
     ['LMArena (formerly LMSYS Chatbot Arena)', 'lmarena.ai'],
@@ -1069,32 +1075,38 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
     ['Data Center Knowledge, Inference chip battleground', 'datacenterknowledge.com'],
     ['Z.ai, GLM-5.3-Flash 320B-A18B (2026)', 'recipes.vllm.ai/zai-org/GLM-5.3-Flash'],
     ['Requesty, Open-weight frontier Aug 2026', 'requesty.ai/blog/open-weight-frontier-august-2026'],
+    ['Anthropic, Introducing Claude Opus 5.5 (2026)', 'anthropic.com/claude-opus-5-5'],
+    ['OpenAI, GPT-6.1 Sol (2026)', 'openai.com/index/gpt-6-for-everyone'],
+    ['Meta, Muse Wonder frontier models (2026)', 'venturebeat.com — Meta Superintelligence Labs'],
+    ['Google, Gemini 4 Argon (2026)', 'vals.ai/models/google_gemini-4-argon'],
+    ['Oct 2026 hardware wave: Maia 300, Vera Rubin, OCP', 'see written report'],
   ];
 
-  // 16 rows per column now: the source set grew to 31 in the 2026-09-16
-  // hardware/MoE loopback.
   const colTop = 1.40, mY = 6.62;
-  const rowH = (mY - colTop) / 16;
-  s.addShape(pres.ShapeType.rect, { x: FULLW/2 - 0.02, y: colTop, w: 0.03, h: mY - colTop - 0.15, fill: { color: BLUE }, line: { width: 0 } });
+  const NCOL = 3, PER = Math.ceil(refs.length / NCOL);
+  const gap = 0.30;
+  const colW = (CW - gap * (NCOL - 1)) / NCOL;
+  const rowH = (mY - colTop) / PER;
 
-  left.forEach((ref, i) => {
-    const y = colTop + i * rowH;
-    s.addText(ref[0], { x: MX, y, w: 5.9, h: rowH * 0.6, fontSize: 8.2, bold: true, color: BLUE, fontFace: FONT, valign: 'top' });
-    s.addText(ref[1], { x: MX, y: y + rowH * 0.52, w: 5.9, h: rowH * 0.42, fontSize: 7, color: MUTED, fontFace: FONT, valign: 'top' });
-  });
-  right.forEach((ref, i) => {
-    const x = FULLW/2 + 0.35, y = colTop + i * rowH;
-    s.addText(ref[0], { x, y, w: 5.9, h: rowH * 0.6, fontSize: 8.2, bold: true, color: BLUE, fontFace: FONT, valign: 'top' });
-    s.addText(ref[1], { x, y: y + rowH * 0.52, w: 5.9, h: rowH * 0.42, fontSize: 7, color: MUTED, fontFace: FONT, valign: 'top' });
+  for (let c = 1; c < NCOL; c++) {
+    const dx = MX + c * (colW + gap) - gap / 2;
+    s.addShape(pres.ShapeType.rect, { x: dx, y: colTop, w: 0.02, h: mY - colTop - 0.12, fill: { color: BLUE }, line: { width: 0 } });
+  }
+  refs.forEach((ref, i) => {
+    const c = Math.floor(i / PER), r = i % PER;
+    const x = MX + c * (colW + gap);
+    const y = colTop + r * rowH;
+    s.addText(ref[0], { x, y, w: colW - 0.12, h: rowH * 0.58, fontSize: 8, bold: true, color: BLUE, fontFace: FONT, valign: 'top' });
+    s.addText(ref[1], { x, y: y + rowH * 0.5, w: colW - 0.12, h: rowH * 0.44, fontSize: 6.8, color: MUTED, fontFace: FONT, valign: 'top' });
   });
 
   s.addShape(pres.ShapeType.rect, { x: 0, y: mY, w: FULLW, h: 0.03, fill: { color: BLUE }, line: { width: 0 } });
-  s.addText('Methodology: 31 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
+  s.addText('Methodology: 36 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
     x: MX, y: mY + 0.1, w: CW, h: 0.8, fontSize: 9.5, italic: true, color: LIGHT, fontFace: FONT, valign: 'top',
   });
 
   s.addNotes(
-    "This is for anyone who wants to go deeper on any single claim. Thirty-one sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
+    "This is for anyone who wants to go deeper on any single claim. Thirty-six sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
   );
   pageNum(s);
 }

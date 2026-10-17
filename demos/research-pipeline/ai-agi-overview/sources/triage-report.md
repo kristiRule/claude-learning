@@ -371,3 +371,24 @@ scope held to **one new slide plus a line on the existing MoE slide** to
 protect the 20-30 minute runtime.
 
 **Running totals: 31 sources — 27 Primary, 4 Supporting, 0 Review, 0 Drop.**
+
+---
+
+## Loopback addition — October 2026 refresh (2026-10-17)
+
+Five sources added; full reasoning in
+**`sources/triage-oct-refresh-2026-10-17.md`**.
+
+| Source | Rel | Rec | Auth | Composite | Triage |
+|---|---|---|---|---|---|
+| `anthropic_opus_5_5` | 0.85 | 1.00 | 1.00 | **0.940** | Keep — Primary |
+| `openai_gpt61_sol` | 0.80 | 1.00 | 1.00 | **0.920** | Keep — Primary |
+| `meta_muse_wonder` | 0.95 | 1.00 | 0.75 | **0.905** | Keep — Primary |
+| `gemini_4_argon` | 0.95 | 1.00 | 0.75 | **0.905** | Keep — Primary |
+| `oct2026_hardware_wave` | 0.85 | 1.00 | 0.75 | **0.865** | Keep — Primary |
+
+A refresh rather than an expansion: the deck stays at 42 slides, with the
+cold open, timeline, open-weight, benchmark and hardware slides updated in
+place. Gate 1 approved by the user 2026-10-17.
+
+**Running totals: 36 sources — 32 Primary, 4 Supporting, 0 Review, 0 Drop.**
