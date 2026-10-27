@@ -105,3 +105,37 @@ with precisely because they cut against the expected narrative:
 platform-ai run.
 
 **Nothing extracted. Awaiting Gate 1 approval.**
+
+---
+
+## Follow-up (2026-10-27, same day) — High-risk AI Recommendations
+
+User, who works in home building/financing/insurance, asked specifically
+about human-in-the-loop requirements for financial decisions and recalled
+an approval/denial asymmetry. Went back to `anthropic_usage_policy_live_text`
+(same source, already Primary at 1.000 — no new source needed) and read
+the **High-risk AI Recommendations** section in full, which the initial
+pass had not captured (only the autonomous-hardware subsection had been
+extracted).
+
+Finding, added to `anthropic_usage_policy_live_text.md`: the real rule is
+stricter than "denials need review, approvals don't." A narrow
+favorable-outcome exemption exists, but it's scoped to four specific
+non-financial circumstances (insurance claim payment, clinician-ordered
+care, healthcare eligibility, public benefits) — loan/credit approvals,
+investment recommendations, and tax advice are not exempted. And a
+"partial approval, reduced amount, or approval with conditions" is
+explicitly carved out of "wholly favorable," so conditional or reduced
+approvals get treated like denials, not approvals.
+
+Added as a new slide ("When does a human actually have to review it?")
+directly after the existing Usage Policy slide, since it's concrete,
+checkable, and the most practically relevant single fact in this whole
+loopback for anyone in lending or insurance specifically — a better
+worked example of "read the actual policy, not the simplified version"
+than anything else in this run.
+
+**Runtime cost, logged honestly:** this adds ~1m36s to the deck (35.9 ->
+37.5 min at 140 wpm). Flagged to the user rather than absorbed silently,
+given how much deliberate work went into the September/October runtime
+trims.

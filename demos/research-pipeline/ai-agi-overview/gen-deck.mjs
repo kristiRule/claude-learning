@@ -867,6 +867,38 @@ divider('Responsible AI', 'The good news first, then how the industry and regula
   pageNum(s);
 }
 
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'Reading the fine print');
+  heading(s, 'When does a human actually have to review it?');
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 1.8, w: CW, h: 1.05, fill: { color: SLATE }, line: { color: BLUE, width: 1 }, rectRadius: 0.08 });
+  s.addText([
+    { text: 'Default rule: ', options: { color: LIGHT } },
+    { text: '“A qualified person must meaningfully review a High-risk AI Recommendation, with the authority to change or modify it.”', options: { color: OFFWH, bold: true, italic: true } },
+  ], { x: MX + 0.25, y: 1.95, w: CW - 0.5, h: 0.8, fontSize: 14.5, fontFace: FONT, valign: 'middle' });
+  s.addText('Applies to: finance · credit and lending · insurance claims, coverage, and underwriting · legal · health · employment', {
+    x: MX, y: 3.0, w: CW, h: 0.4, fontSize: 13, italic: true, color: MUTED, fontFace: FONT,
+  });
+  const rows2 = [
+    ['The exemption is narrow', 'Skipping review is only allowed for outcomes “wholly favorable” to the person — and only in 4 listed cases: paying a claim, approving ordered care, healthcare eligibility, or a public benefit. Loan and credit approvals aren’t on that list.'],
+    ['“Favorable” doesn’t mean “partial”', '“A partial approval, reduced amount, or approval with conditions is not considered wholly favorable.” A reduced credit limit or a conditional approval still needs a human — same as a denial.'],
+  ];
+  rows2.forEach(([label, desc], i) => {
+    const y = 3.55 + i * 1.35;
+    s.addShape(pres.ShapeType.rect, { x: MX, y, w: 0.08, h: 1.15, fill: { color: AMBER }, line: { width: 0 } });
+    s.addText(label, { x: MX + 0.3, y, w: CW - 0.6, h: 0.42, fontSize: 15, bold: true, color: OFFWH, fontFace: FONT });
+    s.addText(desc, { x: MX + 0.3, y: y + 0.42, w: CW - 0.6, h: 0.75, fontSize: 12.5, color: LIGHT, fontFace: FONT, valign: 'top' });
+  });
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 6.35, w: CW, h: 0.55, fill: { color: '1E3A2E' }, line: { width: 0 }, rectRadius: 0.06 });
+  s.addText('Disclosure has no exemption at all — the person must be told AI was used, outcome or not.', {
+    x: MX + 0.25, y: 6.44, w: CW - 0.5, h: 0.38, fontSize: 12, bold: true, color: GREEN, fontFace: FONT, valign: 'middle',
+  });
+  s.addNotes(
+    "Worth one more slide on this policy, because the fine print here is sharper than the headline suggests, and it's genuinely useful if you're anywhere near lending, insurance, or financial services. The common assumption is that you need a human in the loop for denials but not for approvals. That's close, but not quite right, and the actual rule is stricter. The default is that a qualified person has to meaningfully review a high-risk AI recommendation, with real authority to change it, before it's acted on. That covers finance, credit and lending, insurance claims and underwriting, legal, health, and employment. There is an exemption for skipping review, but it only applies to outcomes that are, quote, wholly favorable to the person, and only in four specific cases: paying an insurance claim, approving care a clinician already ordered, healthcare eligibility, or a public benefit. Loan approvals and credit decisions are not on that list. And here's the part that actually has teeth: a partial approval, a reduced amount, or an approval with conditions is explicitly not considered wholly favorable. So a reduced credit limit, or a conditional loan approval, gets treated the same as a denial. It still needs a human. And disclosure, telling the person AI was involved, has no exemption at all, regardless of outcome. If your work touches lending, insurance, or underwriting, this is the actual rule to know, not the simplified version."
+  );
+  pageNum(s);
+}
+
 // ============================================================================
 // A BUSINESS LENS
 // ============================================================================

@@ -44,6 +44,30 @@ Exact quoted language from the current policy, by section:
   emotion recognition (exempting medical/safety use), doxxing, and
   building surveillance tools. Separately bars using models to make law
   enforcement or criminal justice decisions.
+- [fact — THE ONE WITH REAL TEETH FOR FINANCE/INSURANCE/LENDING]
+  **High-risk AI Recommendations**: covers finance (personalized
+  investment recommendations, tax advice), credit (loan and credit-line
+  decisions), insurance (claims, coverage, underwriting), legal, health,
+  and employment. Default rule: *"A qualified person must meaningfully
+  review a High-risk AI Recommendation, with the authority to change or
+  modify it,"* before it's delivered or acted on.
+  - **A narrow favorable-decision exemption exists, and it does not
+    cover credit, lending, or insurance underwriting.** Human review
+    "is not required before acting on a High-risk AI Recommendation
+    wholly favorable" to the person — but *only* in four listed
+    circumstances: paying an insurance claim, approving clinician-ordered
+    care, granting healthcare eligibility, or granting/continuing a
+    public benefit. Loan/credit approvals, investment recommendations,
+    and tax advice are not on that list — review applies regardless of
+    outcome.
+  - **The exemption is narrower than "favorable" sounds.** *"A partial
+    approval, reduced amount, or approval with conditions is not
+    considered 'wholly favorable.'"* A reduced credit limit, a
+    conditional loan approval, or a partial insurance payout all still
+    require human review — they are treated the same as a denial, not
+    as an approval.
+  - **Disclosure has no exemption at all.** The individual "must be
+    clearly told that AI was used," favorable outcome or not.
 - [fact] **Autonomous hardware** ("High-risk Physical Actions"): applies
   when model outputs drive hardware without human approval. Covered:
   moving through shared space, applying injury-capable force, controlling
