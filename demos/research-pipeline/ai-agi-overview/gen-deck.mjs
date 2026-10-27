@@ -840,6 +840,65 @@ divider('Responsible AI', 'The good news first, then how the industry and regula
   pageNum(s);
 }
 
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'Governance in practice, this month');
+  heading(s, 'Anthropic just rewrote its own rulebook');
+  const cards = [
+    ['LOOSENED', GREEN, 'Elections', 'Removed a blanket ban on personalized campaign targeting — it was catching legitimate civic work. Press widely reported this as a tightening.'],
+    ['NEW RULE', AMBER, 'Abuse of models', 'Bans sustained, needless cruelty toward Claude. Explicitly excludes frustration, dark fiction, and testing.'],
+    ['TRACES TO AN INCIDENT', BLUE, 'Surveillance', 'Rewritten after Anthropic’s own Sept 2026 threat report found state actors using Claude to track political dissidents.'],
+  ];
+  const cw4 = (CW - 0.6) / 3;
+  cards.forEach(([tag, accent, label, desc], i) => {
+    const x = MX + i * (cw4 + 0.3);
+    s.addShape(pres.ShapeType.roundRect, { x, y: 1.8, w: cw4, h: 3.6, fill: { color: SLATE }, line: { color: accent, width: 1 }, rectRadius: 0.08 });
+    s.addText(tag, { x: x + 0.2, y: 1.95, w: cw4 - 0.4, h: 0.3, fontSize: 10.5, bold: true, color: accent, fontFace: FONT, charSpacing: 1.5 });
+    s.addText(label, { x: x + 0.2, y: 2.3, w: cw4 - 0.4, h: 0.45, fontSize: 16, bold: true, color: OFFWH, fontFace: FONT });
+    s.addText(desc, { x: x + 0.2, y: 2.85, w: cw4 - 0.4, h: 2.4, fontSize: 11.5, color: LIGHT, fontFace: FONT, valign: 'top' });
+  });
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 5.65, w: CW, h: 0.68, fill: { color: '1E3A2E' }, line: { width: 0 }, rectRadius: 0.06 });
+  s.addText('Effective Nov 12, 2026. Most of it is reorganization, not restriction — the real news is one rule got looser.', {
+    x: MX + 0.25, y: 5.78, w: CW - 0.5, h: 0.42, fontSize: 12, bold: true, color: GREEN, fontFace: FONT, valign: 'middle',
+  });
+  s.addNotes(
+    "One more governance example, and it's a fresh one. Anthropic published a revised Usage Policy on October eighth, effective next month, and it's a good worked example of how to read one of these updates critically instead of taking the headline at face value. Most outlets covered this as Anthropic cracking down, but the actual story is more interesting. The election rule got looser, not stricter. It had a blanket ban on personalized campaign targeting, and that ban was catching legitimate civic education and policy research, so they removed it. There is a genuinely new rule, banning sustained, needless cruelty toward Claude, though it carves out ordinary frustration and dark fiction. And the surveillance rule was rewritten specifically because Anthropic's own threat intelligence report this September found state actors using Claude to help track political dissidents, which is a nice example of a policy you can trace straight back to an incident report. Same skill we've used all talk: don't take the press summary, go read what actually changed."
+  );
+  pageNum(s);
+}
+
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'Reading the fine print');
+  heading(s, 'When does a human actually have to review it?');
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 1.8, w: CW, h: 1.05, fill: { color: SLATE }, line: { color: BLUE, width: 1 }, rectRadius: 0.08 });
+  s.addText([
+    { text: 'Default rule: ', options: { color: LIGHT } },
+    { text: '“A qualified person must meaningfully review a High-risk AI Recommendation, with the authority to change or modify it.”', options: { color: OFFWH, bold: true, italic: true } },
+  ], { x: MX + 0.25, y: 1.95, w: CW - 0.5, h: 0.8, fontSize: 14.5, fontFace: FONT, valign: 'middle' });
+  s.addText('Applies to: finance · credit and lending · insurance claims, coverage, and underwriting · legal · health · employment', {
+    x: MX, y: 3.0, w: CW, h: 0.4, fontSize: 13, italic: true, color: MUTED, fontFace: FONT,
+  });
+  const rows2 = [
+    ['The exemption is narrow', 'Skipping review is only allowed for outcomes “wholly favorable” to the person — and only in 4 listed cases: paying a claim, approving ordered care, healthcare eligibility, or a public benefit. Loan and credit approvals aren’t on that list.'],
+    ['“Favorable” doesn’t mean “partial”', '“A partial approval, reduced amount, or approval with conditions is not considered wholly favorable.” A reduced credit limit or a conditional approval still needs a human — same as a denial.'],
+  ];
+  rows2.forEach(([label, desc], i) => {
+    const y = 3.55 + i * 1.35;
+    s.addShape(pres.ShapeType.rect, { x: MX, y, w: 0.08, h: 1.15, fill: { color: AMBER }, line: { width: 0 } });
+    s.addText(label, { x: MX + 0.3, y, w: CW - 0.6, h: 0.42, fontSize: 15, bold: true, color: OFFWH, fontFace: FONT });
+    s.addText(desc, { x: MX + 0.3, y: y + 0.42, w: CW - 0.6, h: 0.75, fontSize: 12.5, color: LIGHT, fontFace: FONT, valign: 'top' });
+  });
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 6.35, w: CW, h: 0.55, fill: { color: '1E3A2E' }, line: { width: 0 }, rectRadius: 0.06 });
+  s.addText('Disclosure has no exemption at all — the person must be told AI was used, outcome or not.', {
+    x: MX + 0.25, y: 6.44, w: CW - 0.5, h: 0.38, fontSize: 12, bold: true, color: GREEN, fontFace: FONT, valign: 'middle',
+  });
+  s.addNotes(
+    "Worth one more slide on this policy, because the fine print here is sharper than the headline suggests, and it's genuinely useful if you're anywhere near lending, insurance, or financial services. The common assumption is that you need a human in the loop for denials but not for approvals. That's close, but not quite right, and the actual rule is stricter. The default is that a qualified person has to meaningfully review a high-risk AI recommendation, with real authority to change it, before it's acted on. That covers finance, credit and lending, insurance claims and underwriting, legal, health, and employment. There is an exemption for skipping review, but it only applies to outcomes that are, quote, wholly favorable to the person, and only in four specific cases: paying an insurance claim, approving care a clinician already ordered, healthcare eligibility, or a public benefit. Loan approvals and credit decisions are not on that list. And here's the part that actually has teeth: a partial approval, a reduced amount, or an approval with conditions is explicitly not considered wholly favorable. So a reduced credit limit, or a conditional loan approval, gets treated the same as a denial. It still needs a human. And disclosure, telling the person AI was involved, has no exemption at all, regardless of outcome. If your work touches lending, insurance, or underwriting, this is the actual rule to know, not the simplified version."
+  );
+  pageNum(s);
+}
+
 // ============================================================================
 // A BUSINESS LENS
 // ============================================================================
@@ -1042,6 +1101,10 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
     ['Meta, Muse Wonder frontier models (2026)', 'venturebeat.com — Meta Superintelligence Labs'],
     ['Google, Gemini 4 Argon (2026)', 'vals.ai/models/google_gemini-4-argon'],
     ['Oct 2026 hardware wave: Maia 300, Vera Rubin, OCP', 'see written report'],
+    ['Anthropic, 2026 Usage Policy update', 'anthropic.com/news/2026-usage-policy-update'],
+    ['Anthropic, Usage Policy (live text)', 'anthropic.com/legal/aup'],
+    ['Anthropic, Threat report Sept 2026', 'anthropic.com/threat-intelligence-report-september-2026'],
+    ['Anthropic, Model Hardware Standard preview', 'anthropic.com/news/model-hardware-standard-research-preview'],
   ];
 
   const colTop = 1.40, mY = 6.62;
@@ -1063,12 +1126,12 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
   });
 
   s.addShape(pres.ShapeType.rect, { x: 0, y: mY, w: FULLW, h: 0.03, fill: { color: BLUE }, line: { width: 0 } });
-  s.addText('Methodology: 36 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
+  s.addText('Methodology: 43 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
     x: MX, y: mY + 0.1, w: CW, h: 0.8, fontSize: 9.5, italic: true, color: LIGHT, fontFace: FONT, valign: 'top',
   });
 
   s.addNotes(
-    "This is for anyone who wants to go deeper on any single claim. Thirty-six sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
+    "This is for anyone who wants to go deeper on any single claim. Forty-three sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
   );
   pageNum(s);
 }

@@ -49,24 +49,38 @@ hostname. Those are gitignored, but delete strays if you see them.
 
 ## 3. Upload to Google Drive
 
-Uses `rclone` with the `gdrive:` remote. The
-`claude-learning` folder is the existing convention (the weather demo
-uses it too).
+Uses `rclone` with the `gdrive:` remote, into a **per-run folder** named
+for the talk/project (e.g. `AI AGI Overview Talk/`). The older
+`claude-learning/` folder is a legacy flat convention — still used by the
+weather demo, but newer runs get their own named folder instead.
+
+**Date-stamp every upload so Drive keeps a history.** `rclone copy`
+overwrites a same-named file in place — the first time this pipeline
+shipped a loopback update, the previous deck/notes/report were silently
+destroyed on Drive with no way to diff against the prior version. Local
+files don't have this problem (git tracks every revision), but Drive
+does, so the filename itself has to carry the date:
 
 ```bash
 cd demos/research-pipeline/<run>
-~/bin/rclone copy deck.pptx          gdrive:claude-learning/
-~/bin/rclone copy speaker-notes.docx gdrive:claude-learning/
-~/bin/rclone copy research-report.docx           gdrive:claude-learning/
+STAMP=$(date +%Y-%m-%d)
+~/bin/rclone copyto deck.pptx            "gdrive:<Drive Folder>/deck-$STAMP.pptx"
+~/bin/rclone copyto speaker-notes.docx   "gdrive:<Drive Folder>/speaker-notes-$STAMP.docx"
+~/bin/rclone copyto research-report.docx "gdrive:<Drive Folder>/research-report-$STAMP.docx"
 
 # verify
-~/bin/rclone lsl gdrive:claude-learning/
+~/bin/rclone lsl "gdrive:<Drive Folder>/"
 ```
 
-`copy` overwrites the same filename in place, so re-running after edits
-updates the file rather than piling up duplicates. Byte counts in `lsl`
-should match the local files exactly; if they differ, something was
-converted rather than uploaded raw.
+Use `copyto` (exact destination filename), not `copy` (destination
+directory, one source only, keeps the source's basename) — `copy` can't
+produce a dated filename on its own. Byte counts in `lsl` should match
+the local files exactly; if they differ, something was converted rather
+than uploaded raw.
+
+If a PR or chat message links a specific file, link the dated name
+directly rather than "whatever's current in the folder" — the dated
+name is stable; the latest-file-in-the-folder isn't.
 
 ### Token expiry (this will bite you)
 

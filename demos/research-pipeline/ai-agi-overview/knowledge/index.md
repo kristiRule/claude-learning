@@ -1,7 +1,7 @@
 # Knowledge Index
 
 **Talk:** AI/AGI Overview lightning talk
-**Sources extracted:** 37 (11 original + 7 from Gate 2a loopback + 2 from
+**Sources extracted:** 43 (11 original + 7 from Gate 2a loopback + 2 from
 Gate 2b MoE addition + 2 added post-restructure for the "last 12 months"
 recap slide: `nov_2025_frontier_triple_launch`, `apr_2026_release_density`
 + 2 added 2026-09-10: `arc_agi_chollet` to close the AGI/benchmark gap and
@@ -9,11 +9,13 @@ recap slide: `nov_2025_frontier_triple_launch`, `apr_2026_release_density`
 + 5 added 2026-09-16 in the hardware/MoE loopback — see
 `sources/triage-hardware-moe-2026-09-16.md`
 + 5 added 2026-10-17 in the October refresh loopback — see
-`sources/triage-oct-refresh-2026-10-17.md`)
-**Date:** 2026-09-04 (last updated 2026-10-17)
+`sources/triage-oct-refresh-2026-10-17.md`
++ 6 added 2026-10-27 in the Anthropic Usage Policy loopback — see
+`sources/triage-anthropic-usage-policy-2026-10-27.md`)
+**Date:** 2026-09-04 (last updated 2026-10-27)
 **Triage below reflects the Stage 1.5 numeric 40/30/30 rescore** — see
 `sources/triage-report.md` for per-source relevance/recency/authority
-scores. 33 Primary, 4 Supporting, 0 Review, 0 Drop.
+scores. 38 Primary, 5 Supporting, 0 Review, 0 Drop.
 
 | Short name | Title (truncated) | Type | Date | Triage | Fetch method |
 |---|---|---|---|---|---|
@@ -54,6 +56,12 @@ scores. 33 Primary, 4 Supporting, 0 Review, 0 Drop.
 | gemini_4_argon | Gemini 4 Argon & benchmark fragmentation | lab_publication | 2026-10-12 | primary | web_search_multi_source |
 | oct2026_hardware_wave | Oct 2026 inference hardware wave | industry_report | 2026-10 | primary | web_search_multi_source |
 | gartner_hype_cycle_oct2026 | Gartner Hype Cycle — Oct 2026 position | industry_report | 2026-10-01 | primary | web_search_multi_source |
+| anthropic_2026_usage_policy_announcement | 2026 Usage Policy update | lab_publication | 2026-10-08 | primary | read_in_full |
+| anthropic_usage_policy_live_text | Usage Policy (live text) | lab_publication | 2026-11-12 | primary | read_in_full |
+| anthropic_threat_report_sep2026 | Detecting and countering misuse of AI: Sep 2026 | lab_publication | 2026-09-10 | primary | read_in_full_partial |
+| anthropic_model_hardware_standard | Previewing the Model Hardware Standard | lab_publication | 2026-08-27 | primary | web_search_corroborated |
+| anthropic_usage_policy_aug2025_prior | Usage Policy update (prior revision) | lab_publication | 2025-08-15 | primary | read_in_full |
+| press_coverage_reaction_oct2026 | Press coverage and reaction | industry_report | 2026-10 | supporting | web_search_multi_source |
 
 ## Fetch method breakdown
 
@@ -112,6 +120,19 @@ scores. 33 Primary, 4 Supporting, 0 Review, 0 Drop.
 - **open_weight_moe_wave_2026** — lowest authority in the set (0.82). Only
   GLM-5.3-Flash's numbers were verified first-party (`glm53_flash_zai`).
   Verify Hy4 / Qwen3.8-Flash / MiniMax M3 against model cards before use.
+- **anthropic_threat_report_sep2026** — only the first ~100K of a
+  276K-character page was read. The report's dedicated surveillance
+  section itself was NOT reached; the two surveillance cases in the
+  knowledge file were found incidentally elsewhere on the page. Read the
+  rest before stating anything specific about that section.
+- **anthropic_model_hardware_standard** — the Carnegie Mellon "3x faster"
+  figure is partner-reported via secondary coverage, unconfirmed against
+  a primary source. Not slide-usable as a verified number.
+- **anthropic_usage_policy_aug2025_prior** — retrieved from a URL
+  (anthropic.com/news/usage-policy-update, no year) that ALSO looks like
+  the obvious URL for the 2026 update. Several pieces of secondary press
+  appear to conflate the two. The 2026 announcement's correct URL is
+  anthropic.com/news/2026-usage-policy-update.
 - **gartner_hype_cycle_oct2026** — supersedes `gartner_hype_cycle_2026`
   for anything after April 2026. Gartner's reports are paywalled; figures
   are corroborated across secondary summaries, not read from the primary.
