@@ -840,6 +840,33 @@ divider('Responsible AI', 'The good news first, then how the industry and regula
   pageNum(s);
 }
 
+{
+  const s = pres.addSlide(); darkBg(s);
+  kicker(s, 'Governance in practice, this month');
+  heading(s, 'Anthropic just rewrote its own rulebook');
+  const cards = [
+    ['LOOSENED', GREEN, 'Elections', 'Removed a blanket ban on personalized campaign targeting — it was catching legitimate civic work. Press widely reported this as a tightening.'],
+    ['NEW RULE', AMBER, 'Abuse of models', 'Bans sustained, needless cruelty toward Claude. Explicitly excludes frustration, dark fiction, and testing.'],
+    ['TRACES TO AN INCIDENT', BLUE, 'Surveillance', 'Rewritten after Anthropic’s own Sept 2026 threat report found state actors using Claude to track political dissidents.'],
+  ];
+  const cw4 = (CW - 0.6) / 3;
+  cards.forEach(([tag, accent, label, desc], i) => {
+    const x = MX + i * (cw4 + 0.3);
+    s.addShape(pres.ShapeType.roundRect, { x, y: 1.8, w: cw4, h: 3.6, fill: { color: SLATE }, line: { color: accent, width: 1 }, rectRadius: 0.08 });
+    s.addText(tag, { x: x + 0.2, y: 1.95, w: cw4 - 0.4, h: 0.3, fontSize: 10.5, bold: true, color: accent, fontFace: FONT, charSpacing: 1.5 });
+    s.addText(label, { x: x + 0.2, y: 2.3, w: cw4 - 0.4, h: 0.45, fontSize: 16, bold: true, color: OFFWH, fontFace: FONT });
+    s.addText(desc, { x: x + 0.2, y: 2.85, w: cw4 - 0.4, h: 2.4, fontSize: 11.5, color: LIGHT, fontFace: FONT, valign: 'top' });
+  });
+  s.addShape(pres.ShapeType.roundRect, { x: MX, y: 5.65, w: CW, h: 0.68, fill: { color: '1E3A2E' }, line: { width: 0 }, rectRadius: 0.06 });
+  s.addText('Effective Nov 12, 2026. Most of it is reorganization, not restriction — the real news is one rule got looser.', {
+    x: MX + 0.25, y: 5.78, w: CW - 0.5, h: 0.42, fontSize: 12, bold: true, color: GREEN, fontFace: FONT, valign: 'middle',
+  });
+  s.addNotes(
+    "One more governance example, and it's a fresh one. Anthropic published a revised Usage Policy on October eighth, effective next month, and it's a good worked example of how to read one of these updates critically instead of taking the headline at face value. Most outlets covered this as Anthropic cracking down, but the actual story is more interesting. The election rule got looser, not stricter. It had a blanket ban on personalized campaign targeting, and that ban was catching legitimate civic education and policy research, so they removed it. There is a genuinely new rule, banning sustained, needless cruelty toward Claude, though it carves out ordinary frustration and dark fiction. And the surveillance rule was rewritten specifically because Anthropic's own threat intelligence report this September found state actors using Claude to help track political dissidents, which is a nice example of a policy you can trace straight back to an incident report. Same skill we've used all talk: don't take the press summary, go read what actually changed."
+  );
+  pageNum(s);
+}
+
 // ============================================================================
 // A BUSINESS LENS
 // ============================================================================
@@ -1042,6 +1069,10 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
     ['Meta, Muse Wonder frontier models (2026)', 'venturebeat.com — Meta Superintelligence Labs'],
     ['Google, Gemini 4 Argon (2026)', 'vals.ai/models/google_gemini-4-argon'],
     ['Oct 2026 hardware wave: Maia 300, Vera Rubin, OCP', 'see written report'],
+    ['Anthropic, 2026 Usage Policy update', 'anthropic.com/news/2026-usage-policy-update'],
+    ['Anthropic, Usage Policy (live text)', 'anthropic.com/legal/aup'],
+    ['Anthropic, Threat report Sept 2026', 'anthropic.com/threat-intelligence-report-september-2026'],
+    ['Anthropic, Model Hardware Standard preview', 'anthropic.com/news/model-hardware-standard-research-preview'],
   ];
 
   const colTop = 1.40, mY = 6.62;
@@ -1063,12 +1094,12 @@ divider('Bonus: Gartner Hype Cycle Overview', 'A quick look at a well-known piec
   });
 
   s.addShape(pres.ShapeType.rect, { x: 0, y: mY, w: FULLW, h: 0.03, fill: { color: BLUE }, line: { width: 0 } });
-  s.addText('Methodology: 36 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
+  s.addText('Methodology: 43 sources triaged on a 40% relevance / 30% recency / 30% authority rubric, extracted into structured claims (fact vs. opinion tagged), cross-analyzed for agreements and gaps, gap-checked via a loopback round, then verified for citation integrity before drafting slides.', {
     x: MX, y: mY + 0.1, w: CW, h: 0.8, fontSize: 9.5, italic: true, color: LIGHT, fontFace: FONT, valign: 'top',
   });
 
   s.addNotes(
-    "This is for anyone who wants to go deeper on any single claim. Thirty-six sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
+    "This is for anyone who wants to go deeper on any single claim. Forty-three sources, every one of them a primary lab publication, a named podcast or channel, or an institutional report, not a random blog post. The research followed a forty percent relevance, thirty percent recency, thirty percent authority scoring rubric, with every claim tagged as fact or opinion before it made it onto a slide. Happy to share the full written report."
   );
   pageNum(s);
 }
